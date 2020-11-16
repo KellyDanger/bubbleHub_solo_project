@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import CreateProfile from '../CreateProfile/CreateProfile';
 import RiskTolerance from '../RiskTolerance/RiskTolerance';
+import ActivitySelect from '../ActivitySelect/ActivitySelect';
+import BMDashboard from '../BMDashboard/BMDashboard';
 
 import './App.css';
 
@@ -98,13 +100,25 @@ class App extends Component {
               // logged in shows UserPage else shows LoginPage
               exact
               path="/createprofile"
-              component={CreateProfile}
+              component={CreateProfile}              
             />
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
               path="/risktolerance"
               component={RiskTolerance}
+            />
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/activityselect"
+              component={ActivitySelect}              
+            />
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/bubblemates"
+              component={BMDashboard}              
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
@@ -116,5 +130,5 @@ class App extends Component {
     );
   }
 }
-
+                           
 export default connect()(App);
