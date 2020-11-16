@@ -85,3 +85,4 @@ SELECT "user"."name" FROM "user"
 JOIN "bubble_mates_junction" on "user"."id" = "bm_id"
 WHERE "bubble_mates_junction"."bubble_owner" = 5;
 
+
