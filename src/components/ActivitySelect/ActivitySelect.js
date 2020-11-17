@@ -15,8 +15,6 @@ class ActivitySelect extends Component {
   render() {
     return(
       <div>
-        {/* {JSON.stringify(this.props.reduxState.activityReducer)} */}
-        <div>
         <table>
           <thead>
             <tr>
@@ -25,10 +23,15 @@ class ActivitySelect extends Component {
             </tr>
             </thead>
             <tbody>
-              <ActivityItem/>
+              {this.props.reduxState.activityReducer.map((activity) => {
+                return (
+                  <tr key={activity.id}>
+                    <ActivityItem activity={activity}/>
+                  </tr>
+                )
+              })}
             </tbody>
         </table>
-      </div> 
       </div>
     )
   }

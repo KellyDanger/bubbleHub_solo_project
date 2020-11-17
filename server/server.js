@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const activityRouter = require('./routes/activity.router');
+const riskRouter = require('./routes/risk.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
