@@ -9,7 +9,10 @@ class ActivityItem extends Component {
 
   addToUser = (event) => {
     console.log('clicked', event.target.value);
-    
+    console.log('clicked', this.state);
+    this.setState ({
+      hubNumber: this.state.hubNumber += Number(event.target.value)
+    })
   }
 
 

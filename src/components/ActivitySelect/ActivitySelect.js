@@ -4,9 +4,6 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-  state = {
-    isChecked: false
-  }
 
   componentDidMount = () => {
     this.props.dispatch({
@@ -14,11 +11,6 @@ class ActivitySelect extends Component {
     })
   }
   
-  handleCheck = (event) => {
-    this.setState({
-      isChecked: !this.state.isChecked,
-    })
-  }
 
   render() {
     return(
