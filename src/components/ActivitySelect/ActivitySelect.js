@@ -29,7 +29,6 @@ class ActivitySelect extends Component {
           <thead>
             <tr>
               <th>Activity</th>
-              <th>Risk Level</th>
               <th>Response</th>
             </tr>
             </thead>
