@@ -11,6 +11,10 @@ router.get('/', (req, res) => {
     res.sendStatus(500);
   })
 });
+//TODO post to user_activity table
+router.post('/', (req, res) => {
+  console.log('in post', req.body);
+})
 
 
 
