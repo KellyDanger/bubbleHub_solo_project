@@ -23,5 +23,4 @@ const mapStoreToProps = reduxState => ({
   reduxState
 })
 
-
 export default connect(mapStoreToProps)(ActivitySelect);
