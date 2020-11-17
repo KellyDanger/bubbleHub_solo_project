@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
@@ -22,16 +23,21 @@ class ActivitySelect extends Component {
   render() {
     return(
       <div>
-        <p>This is where you Select your Activities</p>
         {/* {JSON.stringify(this.props.reduxState.activityReducer)} */}
-          {this.props.reduxState.activityReducer.map((activity) => {
-            return (
-            <div key={activity.id}>
-              <input type="checkbox" onChange={this.handleCheck} value={activity.description} id={activity.id}/>
-              <label htmlFor={activity.id}>{activity.description}</label>
-            </div>
-            )
-          })}
+        <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Activity</th>
+              <th>Risk Level</th>
+              <th>Response</th>
+            </tr>
+            </thead>
+            <tbody>
+              <ActivityItem/>
+            </tbody>
+        </table>
+      </div> 
       </div>
     )
   }
