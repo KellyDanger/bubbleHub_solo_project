@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     console.log('each item is', val);
     let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES (${val}, ${req.body.userId});`;
     pool.query(queryText).then((result) => {
-      // res.send(result.rows) 
+      // res.send(result.rows)
   }).catch((error) => {
     console.log('error in post');
     return res.sendStatus(500);
