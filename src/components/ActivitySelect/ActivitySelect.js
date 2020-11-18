@@ -6,6 +6,7 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 class ActivitySelect extends Component {
   state = {
     activitiesArray: [],
+    userId: this.props.reduxState.user.id
   }
 
   componentDidMount = () => {
@@ -20,8 +21,8 @@ class ActivitySelect extends Component {
     this.setState ({
       activitiesArray: [...this.state.activitiesArray, param.id]  
     }) 
-
   }
+  
   submitData = () => {
     console.log('This is the state', this.state);
     this.props.dispatch({
@@ -29,6 +30,9 @@ class ActivitySelect extends Component {
       payload: this.state
   })
   }
+
+
+  
 
   render() {
     return(
