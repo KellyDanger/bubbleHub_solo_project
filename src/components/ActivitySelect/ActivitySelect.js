@@ -4,17 +4,36 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
+  state = {
+    activitiesArray: [],
+  }
 
   componentDidMount = () => {
     this.props.dispatch({
       type: 'FETCH_ACTIVITIES'
     })
   }
-  
+
+  handleClick = (event, param) => {
+    console.log('clicked', param.riskLevel)
+    event.preventDefault();
+    this.setState ({
+      activitiesArray: [...this.state.activitiesArray, param.id]  
+    }) 
+
+  }
+  submitData = () => {
+    console.log('This is the state', this.state);
+    this.props.dispatch({
+      type: 'ADD_USER_ACTIVITY',
+      payload: this.state
+  })
+  }
 
   render() {
     return(
       <div>
+             {JSON.stringify(this.state)}
         <table>
           <thead>
             <tr>
@@ -26,12 +45,13 @@ class ActivitySelect extends Component {
               {this.props.reduxState.activityReducer.map((activity) => {
                 return (
                   <tr key={activity.id}>
-                    <ActivityItem activity={activity}/>
+                    <ActivityItem activity={activity} handleClick={this.handleClick}/>
                   </tr>
                 )
               })}
             </tbody>
         </table>
+        <button onClick={this.submitData}>Submit</button>
       </div>
     )
   }
