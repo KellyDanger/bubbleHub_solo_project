@@ -5,27 +5,28 @@ import { connect } from 'react-redux';
 class ActivityItem extends Component {
   //TO DO...send value of checked box to hubNumber Saga and add to saga State
   state = {
-    clicked: false
+    activitiesArray:[{
+      activity_id: this.props.activity.id,
+      user_id: this.props.reduxState.user.id
+    }],
   }
 
   handleClick = (event, param) => {
     console.log('clicked', param.riskLevel)
     event.preventDefault();
-    // this.setState ({
-    //   clicked: !this.state.clicked,
-    //   // ...this.state.activity,
-    //   activity: {
-    //     id: param.id,
-    //     description: param.description,
-    //     riskLevel: param.riskLevel
-    //   }
-    // })
-    // console.log('STATE', this.state.activity);
+    this.setState ({
+      ...this.state.activitiesArray,
+      activitiesArray: [{
+        id: param.id,
+      }]
+    })
+    console.log('STATE', this.state.activitiesArray);   
     this.props.dispatch({
         type: 'ADD_USER_ACTIVITY',
-        payload: param
+        payload: this.state
     })
   }
+//TODO conditional rendering of button text/functionality
 
 
   render(){
