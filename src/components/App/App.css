@@ -110,3 +110,7 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+/* -------CUSTOM STYLING DEV  */
+table, th, td {
+  border: 1px solid black;
+}
