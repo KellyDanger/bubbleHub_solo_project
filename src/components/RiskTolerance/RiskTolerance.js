@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+// import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class RiskTolerance extends Component {
 
@@ -8,9 +8,13 @@ class RiskTolerance extends Component {
     return(
       <div>
         <p>This is where you Set your Risk Tolerance</p>
+        
       </div>
     )
   }
 }
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
 
 export default connect(mapStoreToProps)(RiskTolerance);

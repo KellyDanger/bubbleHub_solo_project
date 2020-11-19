@@ -31,9 +31,6 @@ class ActivitySelect extends Component {
   })
   }
 
-
-  
-
   render() {
     return(
       <div>

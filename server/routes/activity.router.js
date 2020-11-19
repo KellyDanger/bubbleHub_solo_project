@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
   let activitiesArray = req.body.activitiesArray
   for(let val of activitiesArray) {
     console.log('each item is', val);
-    let queryText = `INSERT INTO "user_acivities" ("activity_id", "user_id") VALUES (${val}, ${req.body.userId});`;
+    let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES (${val}, ${req.body.userId});`;
     pool.query(queryText).then((result) => {  
   }).catch((error) => {
     console.log('error in post');
