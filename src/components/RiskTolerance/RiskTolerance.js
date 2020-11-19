@@ -8,7 +8,17 @@ class RiskTolerance extends Component {
   }
 
   handleCheck = (event, param) => {
-    console.log(param);
+    // console.log(param);
+    this.setState({
+      toleranceNum: param
+    })
+  }
+  handleSubmit = () => {
+    this.props.dispatch({
+      type: 'ADD_USER_TOLERANCE',
+      payload: this.state
+    })
+    this.props.history.push('/activityselect')
   }
 
 
@@ -27,6 +37,7 @@ class RiskTolerance extends Component {
           <label htmlFor="4">Level 4 stuff</label><br></br>
           <input type="radio" id="5" name="tolerance" value="5" onChange={(event) => this.handleCheck(event, '5')}/>
           <label htmlFor="5">Level 5 stuff</label>
+          <button onClick={this.handleSubmit}>Submit</button>
         </div>
       </>
     )
