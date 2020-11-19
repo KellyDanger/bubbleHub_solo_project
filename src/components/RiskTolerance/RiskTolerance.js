@@ -7,6 +7,9 @@ class RiskTolerance extends Component {
     toleranceNum: 0,
     userId: this.props.reduxState.user.id
   }
+componentDidMount = () => {
+  this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
+}
 
   handleCheck = (event, param) => {
     // console.log(param);

@@ -29,11 +29,17 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
   }
 
   render() {
     return (
+      
       <Router>
+        <header>
+          <h1>Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h1>
+        </header>
+        
         <div>
           <Nav />
           <Switch>
@@ -131,4 +137,8 @@ class App extends Component {
   }
 }
                            
-export default connect()(App);
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
+
+export default connect(mapStoreToProps)(App);
