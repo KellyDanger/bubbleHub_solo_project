@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 
 class ActivityItem extends Component {
-  //TO DO...send value of checked box to hubNumber Saga and add to saga State
 //TODO conditional rendering of button text/functionality
 
 

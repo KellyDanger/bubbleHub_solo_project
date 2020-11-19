@@ -6,7 +6,7 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 class ActivitySelect extends Component {
   state = {
     activitiesArray: [],
-    userId: this.props.reduxState.user.id
+    userId: this.props.reduxState.user.id,
   }
 
   componentDidMount = () => {
@@ -15,10 +15,9 @@ class ActivitySelect extends Component {
   }
 
   handleClick = (event, param) => {
-    console.log('clicked', param.riskLevel)
     event.preventDefault();
     this.setState ({
-      activitiesArray: [...this.state.activitiesArray, param.id]  
+      activitiesArray: [...this.state.activitiesArray, param.id], 
     }) 
   }
   
@@ -33,7 +32,6 @@ class ActivitySelect extends Component {
   render() {
     return(
       <div>
-             {JSON.stringify(this.state)}
         <table>
           <thead>
             <tr>
