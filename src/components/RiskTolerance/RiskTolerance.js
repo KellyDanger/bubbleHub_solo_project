@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class RiskTolerance extends Component {
   state = {
     toleranceNum: 0,
+    userId: this.props.reduxState.user.id
   }
 
   handleCheck = (event, param) => {
