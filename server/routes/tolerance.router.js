@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.put('/', (req, res) => {
   console.log('req is', req.body);
-  let queryText = `UPDATE "user" SET "tolerance" = 3 WHERE "id" = 1;`;
-  pool.query(queryText).then(result => {
+  let queryText = `UPDATE "user" SET "tolerance" = $1 WHERE "id" = $2;`;
+  pool.query(queryText, [req.body.toleranceNum, req.body.userId]).then(result => {
     console.log('new tolerance is', result);
     res.sendStatus(202)
   }).catch(error => {
