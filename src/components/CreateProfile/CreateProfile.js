@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+// import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class CreateProfile extends Component {
   state = {
     name: '',
     email: '',
     city: '',
-    state: ''
+    state: '',
+    userId: this.props.reduxState.user.id
   }
 
   handleChangeFor = (event, input) => {
@@ -16,7 +17,14 @@ class CreateProfile extends Component {
       [input]: event.target.value
     });
     console.log('STATE', this.state);
-    
+  }
+
+  handleSubmit = () => {
+    this.props.dispatch({
+      type: 'ADD_USER_DATA',
+      payload: this.state
+    })
+    this.props.history.push('/risktolerance')
   }
 
 
@@ -36,5 +44,9 @@ class CreateProfile extends Component {
     )
   }
 }
+
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
 
 export default connect(mapStoreToProps)(CreateProfile);

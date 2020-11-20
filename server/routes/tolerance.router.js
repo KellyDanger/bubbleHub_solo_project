@@ -11,6 +11,7 @@ router.put('/', (req, res) => {
     res.sendStatus(202)
   }).catch(error => {
     console.log('error in put', error); 
+    res.sendStatus(500);
   })
 })
 
