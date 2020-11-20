@@ -16,5 +16,10 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.put('/:id', (req, res) => {
+  let queryText = `UPDATE "user" SET "hubNumber" = $1 WHERE "id" = $2;`;
+  pool.query(queryText, [req.params.id, req.body.user.id])
+})
+
 
 module.exports = router;

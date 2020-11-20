@@ -11,7 +11,7 @@ class ActivitySelect extends Component {
 
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_ACTIVITIES'})
-    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
+    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});  
   }
 
   handleClick = (event, param) => {
