@@ -18,11 +18,21 @@ function* addUserActivity (action) {
     console.log('error in addUserActivity SAGA', error);  
   }
 }
+function* deleteActivity (action) {
+  try{
+    yield console.log('ACTION IS', action.payload[0]);
+
+    yield axios.delete(`/api/activities/${action.payload[1]}`, action.payload[0])
+  } catch(error) {
+    console.log('error in deleteActivity', error);
+  }
+}
 
 
 function* activitySaga() {
     yield takeEvery('FETCH_ACTIVITIES', fetchActivities);
     yield takeEvery('ADD_USER_ACTIVITY', addUserActivity);
+    yield takeEvery('DELETE_ACTIVITY', deleteActivity);
   }
 
 export default activitySaga;

@@ -26,6 +26,10 @@ class ActivitySelect extends Component {
   }
   deleteActivity = (event, param) => {
     console.log('DELETING', param.id);
+    this.props.dispatch({
+      type: 'DELETE_ACTIVITY',
+      payload: [param, this.props.reduxState.user.id]
+    })
   }
   // submitData = () => {
   //     this.props.dispatch({

@@ -14,14 +14,21 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log('REQ is', req.body[0].id, req.body[1]);
-  let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES (${req.body[0].id}, ${req.body[1]});`;
-  pool.query(queryText).then((result) => {
+  let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES ($1, $2);`;
+  pool.query(queryText, [req.body[0].id, req.body[1] ]).then((result) => {
     res.sendStatus(200)
   }).catch((error) => {
     console.log('error in post');
     res.sendStatus(500)
   })
 })
+
+router.delete('/:id', (req, res) => {
+  console.log('REQ is', req.body, req.params);
+})
+// TODO FIX THIS ERROR
+
+
 //TODO post to user_activity table
 // router.post('/', (req, res) => {
 //   console.log('req is', req.body.activitiesArray, req.body.userId);
