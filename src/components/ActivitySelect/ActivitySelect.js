@@ -27,6 +27,7 @@ class ActivitySelect extends Component {
       type: 'ADD_USER_ACTIVITY',
       payload: this.state
   })
+  this.props.history.push('/');
   }
 
   render() {

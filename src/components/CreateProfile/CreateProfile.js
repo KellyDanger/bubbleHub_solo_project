@@ -10,7 +10,7 @@ class CreateProfile extends Component {
     state: '',
     userId: this.props.reduxState.user.id
   }
-
+//TODO cleanup data entry state dropdown etc
   handleChangeFor = (event, input) => {
     this.setState({
       ...this.state,

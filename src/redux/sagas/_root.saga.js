@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import activitySaga from './activity.saga';
 import toleranceSaga from './tolerance.saga';
 import profileSaga from './profile.saga';
+import hubNumberSaga from './hubNumber.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     activitySaga(),
     toleranceSaga(),
     profileSaga(),
+    hubNumberSaga(),
   ]);
 }
