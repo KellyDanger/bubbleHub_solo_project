@@ -9,7 +9,6 @@ router.get('/:id', (req, res) => {
   JOIN "user" ON "user"."id" = "user_activities"."user_id"
   WHERE "user"."id" = 6;`;
   pool.query(queryText).then((result) => {
-    console.log('RESULTS', result.rows[0].sum, result.rows[0].count);
     let hubNum = Math.round(Math.sqrt(result.rows[0].sum / result.rows[0].count))
     res.send({hubNumber: hubNum})
   }).catch((error) => {

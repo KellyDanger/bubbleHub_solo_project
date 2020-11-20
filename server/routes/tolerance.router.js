@@ -7,7 +7,6 @@ router.put('/', (req, res) => {
   
   let queryText = `UPDATE "user" SET "tolerance" = $1 WHERE "id" = $2;`;
   pool.query(queryText, [req.body.toleranceNum, req.body.userId]).then(result => {
-    console.log('new tolerance is', result);
     res.sendStatus(202)
   }).catch(error => {
     console.log('error in put', error); 
