@@ -24,7 +24,9 @@ class ActivitySelect extends Component {
       payload: [param, this.props.reduxState.user.id]
     })
   }
-  
+  deleteActivity = (event, param) => {
+    console.log('DELETING', param.id);
+  }
   // submitData = () => {
   //     this.props.dispatch({
   //       type: 'FETCH_HUBNUMBER',
@@ -47,14 +49,15 @@ class ActivitySelect extends Component {
           <thead>
             <tr>
               <th>Activity</th>
-              <th>Response</th>
+              <th>Add</th>
+              <th>Remove</th>
             </tr>
             </thead>
             <tbody>
               {this.props.reduxState.activityReducer.map((activity) => {
                 return (
                   <tr key={activity.id}>
-                    <ActivityItem activity={activity} handleClick={this.handleClick}/>
+                    <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
                   </tr>
                 )
               })}
