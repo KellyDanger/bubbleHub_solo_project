@@ -16,7 +16,7 @@ router.put('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  console.log('USER IS', req.params.id);
+  // console.log('USER IS', req.params.id);
   let queryText = `SELECT "tolerance" FROM "user" WHERE "id" = $1;`;
   pool.query(queryText, [req.params.id]).then((result) => {
     res.send(result.rows)
