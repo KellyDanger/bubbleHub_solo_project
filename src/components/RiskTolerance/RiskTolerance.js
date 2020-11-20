@@ -8,15 +8,16 @@ class RiskTolerance extends Component {
     userId: this.props.reduxState.user.id
   }
 componentDidMount = () => {
-  this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
+  this.props.dispatch({type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
 }
 
   handleCheck = (event, param) => {
-    // console.log(param);
+    console.log(param);
     this.setState({
       toleranceNum: param
     })
   }
+  //sends toleranceNum and userId to root saga/then tolerance saga
   handleSubmit = () => {
     this.props.dispatch({
       type: 'ADD_USER_TOLERANCE',

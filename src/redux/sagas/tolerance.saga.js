@@ -3,15 +3,15 @@ import {put, takeEvery} from 'redux-saga/effects';
 
 function* addUserTolerance(action) {
   try {
-    yield axios.put('/api/tolerance', action.payload);
+    yield axios.put('/api/tolerance', action.payload);  
   }catch(error) {
     console.log('error in post tolerance');  
   }
 }
 
-function* fetchTolerance() {
+function* fetchTolerance(action) {
   try{
-    const toleranceResponse = yield axios.get(`/api/tolerance/9`)
+    const toleranceResponse = yield axios.get(`/api/tolerance/${action.payload}`)
     yield console.log('SAGA', toleranceResponse.data);
     yield put({type:'SET_USER_TOLERANCE', payload: toleranceResponse.data});
   }catch(error){

@@ -29,7 +29,9 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
-    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
+  }
+  componentDidUpdate() {
+    this.props.dispatch({ type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id})
   }
 
   render() {
