@@ -33,7 +33,7 @@ class App extends Component {
   }
   componentDidUpdate() {
     this.props.dispatch({ type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
-    this.props.dispatch({ type: 'FETCH_RAW_HUBNUMBER', payload: this.props.reduxState.user.id});
+    this.props.dispatch({ type: 'FETCH_HUBNUMBER', payload: this.props.reduxState.user.id});
   }
 
   render() {
