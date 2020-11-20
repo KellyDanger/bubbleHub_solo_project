@@ -4,6 +4,7 @@ import user from './user.reducer';
 import activityReducer from './activity.reducer';
 import userActivityReducer from './useractivity.reducer';
 import userToleranceReducer from './tolerance.reducer';
+import profileReducer from './profile.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   activityReducer,
   userActivityReducer,
   userToleranceReducer,
+  profileReducer,
 });
 
 export default rootReducer;

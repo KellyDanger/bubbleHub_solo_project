@@ -11,7 +11,6 @@ function* fetchActivities() {
   }
 }
 function* addUserActivity (action) {
-  yield console.log('in add UA saga', action.payload );
   // url is /api/activities :id from payload
   try{
     yield axios.post('/api/activities', action.payload)
