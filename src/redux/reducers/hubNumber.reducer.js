@@ -1,9 +1,11 @@
-const userToleranceReducer = (state=0, action) => {
+const hubNumberReducer = (state=0, action) => {
   switch(action.type) {
     case 'SET_HUBNUMBER':
-      return action.payload.hubnumber;
+      return action.payload;
     default:
       return state;
   }
 }
-export default userToleranceReducer;
+
+//need to link up to get route
+export default hubNumberReducer;

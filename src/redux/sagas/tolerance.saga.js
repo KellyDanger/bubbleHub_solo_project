@@ -14,7 +14,6 @@ function* addUserTolerance(action) {
 function* fetchTolerance(action) {
   try{
     const toleranceResponse = yield axios.get(`/api/tolerance/${action.payload}`)
-    yield console.log('SAGA', toleranceResponse.data);
     yield put({type:'SET_USER_TOLERANCE', payload: toleranceResponse.data});
   }catch(error){
     console.log('error in fetch', error);
