@@ -16,5 +16,15 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.put('/', (req, res) => {
+  let queryText = `UPDATE "user" SET "hubNumber" = $1 WHERE "id" = $2;`;
+  pool.query(queryText, [req.body[0], req.body[1]]).then(result => {
+    res.sendStatus(200)
+  }).catch(error => {
+    console.log('error in put', error);
+    res.sendStatus(500);
+  })
+})
+
 
 module.exports = router;

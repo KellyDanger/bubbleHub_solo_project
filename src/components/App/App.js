@@ -29,17 +29,18 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
-
+    
   }
   componentDidUpdate() {
     this.props.dispatch({ type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
-    this.props.dispatch({ type: 'FETCH_RAW_HUBNUMBER', payload: this.props.reduxState.user.id});
+    this.props.dispatch({ type: 'FETCH_HUBNUMBER', payload: this.props.reduxState.user.id});
   }
 
   render() {
     return (
       
       <Router>
+        {JSON.stringify(this.props.reduxState.hubNumberReducer)}
         <header>
           <h1>Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h1>
           <h1>Your Hub Number is: {this.props.reduxState.hubNumberReducer}</h1>

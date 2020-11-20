@@ -4,30 +4,40 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-  state = {
-    activitiesArray: [],
-    userId: this.props.reduxState.user.id,
-  }
+  // state = {
+  //   activity: null,
+  //   userId: this.props.reduxState.user.id,
+  // }
 
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_ACTIVITIES'})
-    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
+    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});  
   }
 
   handleClick = (event, param) => {
     event.preventDefault();
-    this.setState ({
-      activitiesArray: [...this.state.activitiesArray, param.id], 
-    }) 
+    // this.setState ({ 
+    //   activity: param.id,
+    // })
+    this.props.dispatch({
+      type:'ADD_USER_ACTIVITY',
+      payload: [param, this.props.reduxState.user.id]
+    })
   }
   
-  submitData = () => {
-    console.log('This is the state', this.state);
+  // submitData = () => {
+  //     this.props.dispatch({
+  //       type: 'FETCH_HUBNUMBER',
+  //       payload: this.props.reduxState.user.id
+  //     })
+  // this.props.history.push('/');
+  // }
+
+  submitData = (event, param) => {
     this.props.dispatch({
-      type: 'ADD_USER_ACTIVITY',
-      payload: this.state
-  })
-  this.props.history.push('/');
+      type: 'ADD_HUBNUMBER',
+      payload: [param, this.props.reduxState.user.id]
+    })
   }
 
   render() {
@@ -50,7 +60,7 @@ class ActivitySelect extends Component {
               })}
             </tbody>
         </table>
-        <button onClick={this.submitData}>Submit</button>
+        <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
       </div>
     )
   }
