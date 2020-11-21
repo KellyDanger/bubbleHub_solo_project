@@ -7,7 +7,6 @@ class BMDashboard extends Component {
     searchEmail: null
   }
 
-
   handleChange = (event) => {
     this.setState({
       searchEmail: event.target.value
@@ -15,9 +14,13 @@ class BMDashboard extends Component {
     console.log(event.target.value);
   }
 
+  //sends dispatch to BM SAGA to find a user by email
   searchUsers = () => {
     console.log('Clicked', this.state);
-    
+    this.props.dispatch({
+      type: 'FETCH_BM',
+      payload: this.state
+    })
   }
 
   render() {
