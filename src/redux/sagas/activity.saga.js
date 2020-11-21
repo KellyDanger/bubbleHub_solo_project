@@ -19,10 +19,22 @@ function* addUserActivity (action) {
   }
 }
 
+// receives param.id and userid as array [action id and user id]
+function* deleteActivity (action) {
+  try{
+    yield console.log('ACTION IS', action.payload.id);
+    // sends delete request via axios with action payload to router
+    yield axios.delete(`/api/activities/${action.payload.user}/${action.payload.id}`)
+  } catch(error) {
+    console.log('error in deleteActivity', error);
+  }
+}
+
 
 function* activitySaga() {
     yield takeEvery('FETCH_ACTIVITIES', fetchActivities);
     yield takeEvery('ADD_USER_ACTIVITY', addUserActivity);
+    yield takeEvery('DELETE_ACTIVITY', deleteActivity);
   }
 
 export default activitySaga;

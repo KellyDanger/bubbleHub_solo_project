@@ -3,11 +3,28 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class BMDashboard extends Component {
+  state={
+    searchEmail: null
+  }
+
+
+  handleChange = (event) => {
+    this.setState({
+      searchEmail: event.target.value
+    })
+    console.log(event.target.value);
+  }
+
+  searchUsers = () => {
+    console.log('Clicked', this.state);
+    
+  }
 
   render() {
     return(
       <div>
-        <p>This is where you see your bubblemates</p>
+        <input type="text" placehoder="description" onChange={(event) => this.handleChange(event)}/>
+        <button onClick={this.searchUsers}>Search</button>
       </div>
     )
   }

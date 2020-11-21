@@ -24,7 +24,16 @@ class ActivitySelect extends Component {
       payload: [param, this.props.reduxState.user.id]
     })
   }
-  
+  // Recieves click event and activity as param from ActivityItem.js
+  deleteActivity = (event, param) => {
+    // logs the Number here
+    console.log('DELETING', param.id);
+    // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
+    this.props.dispatch({
+      type: 'DELETE_ACTIVITY',
+      payload: {id: param.id, user: this.props.reduxState.user.id}
+    })
+  }
   // submitData = () => {
   //     this.props.dispatch({
   //       type: 'FETCH_HUBNUMBER',
@@ -47,14 +56,15 @@ class ActivitySelect extends Component {
           <thead>
             <tr>
               <th>Activity</th>
-              <th>Response</th>
+              <th>Add</th>
+              <th>Remove</th>
             </tr>
             </thead>
             <tbody>
               {this.props.reduxState.activityReducer.map((activity) => {
                 return (
                   <tr key={activity.id}>
-                    <ActivityItem activity={activity} handleClick={this.handleClick}/>
+                    <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
                   </tr>
                 )
               })}

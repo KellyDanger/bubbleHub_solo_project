@@ -14,14 +14,33 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log('REQ is', req.body[0].id, req.body[1]);
-  let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES (${req.body[0].id}, ${req.body[1]});`;
-  pool.query(queryText).then((result) => {
+  let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES ($1, $2);`;
+  pool.query(queryText, [req.body[0].id, req.body[1] ]).then((result) => {
     res.sendStatus(200)
   }).catch((error) => {
     console.log('error in post');
     res.sendStatus(500)
   })
 })
+
+router.delete('/:user/:id', (req, res) => {
+  if(req.isAuthenticated()){
+    console.log('REQ is', req.params);
+  let queryText = `DELETE FROM "user_activities" WHERE "user_id" = $1 AND "activity_id" = $2;`;
+  pool.query(queryText, [req.params.user, req.params.id]).then((result) => {
+    console.log('success deleting', result);
+    res.send(result);
+  }).catch((error) => {
+    console.log('error in deleting item', error);
+    res.sendStatus(500);
+  })
+  }else {
+    res.sendStatus(403)
+  } 
+})
+// TODO FIX THIS ERROR
+
+
 //TODO post to user_activity table
 // router.post('/', (req, res) => {
 //   console.log('req is', req.body.activitiesArray, req.body.userId);
