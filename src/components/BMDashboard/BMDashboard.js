@@ -40,6 +40,8 @@ class BMDashboard extends Component {
     })
     this.fetchMyBubbleMates();
   }
+  
+  //starting of delete route for bms
   deleteBm = (event, param) => {
     console.log('deleting', param);
   }

@@ -47,6 +47,7 @@ class ActivitySelect extends Component {
       type: 'ADD_HUBNUMBER',
       payload: [param, this.props.reduxState.user.id]
     })
+    this.props.history.push('/bubblemates')
   }
 
   render() {
