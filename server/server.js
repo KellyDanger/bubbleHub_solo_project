@@ -14,6 +14,7 @@ const activityRouter = require('./routes/activity.router');
 const toleranceRouter = require('./routes/tolerance.router');
 const profileRouter = require('./routes/profile.router');
 const hubNumberRouter = require('./routes/hubNumber.router');
+const bmRouter = require('./routes/bm.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/api/profile', profileRouter);
 app.use('/api/activities', activityRouter);
 app.use('/api/tolerance', toleranceRouter);
 app.use('/api/hubnumber', hubNumberRouter);
+app.use('/api/bm', bmRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+// import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class BMDashboard extends Component {
   state={
     searchEmail: null
   }
-
-
+//sets state to user-input
   handleChange = (event) => {
     this.setState({
       searchEmail: event.target.value
@@ -15,14 +14,32 @@ class BMDashboard extends Component {
     console.log(event.target.value);
   }
 
+  //sends dispatch to BM SAGA to find a user by email
   searchUsers = () => {
     console.log('Clicked', this.state);
-    
+    this.props.dispatch({
+      type: 'FETCH_BM',
+      payload: this.state
+    })
   }
+  // on click of "add" button, sends id number of searched BM to bm router
+  addUser = (event, param) => {
+    console.log('ADDING', param);
+    this.props.dispatch({
+      type: 'ADD_BM',
+      payload: {bmId: param}
+    })
+  }
+  
 
   render() {
     return(
       <div>
+        <div>{this.props.reduxState.bmReducer.id && <div>
+          <p>{this.props.reduxState.bmReducer.username}</p>
+          <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
+        </div>}
+      </div>
         <input type="text" placehoder="description" onChange={(event) => this.handleChange(event)}/>
         <button onClick={this.searchUsers}>Search</button>
       </div>
@@ -30,4 +47,12 @@ class BMDashboard extends Component {
   }
 }
 
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
+
 export default connect(mapStoreToProps)(BMDashboard);
+{/* <div>
+<p>{this.props.reduxState.bmReducer.username}</p>
+<button>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
+</div>} */}
