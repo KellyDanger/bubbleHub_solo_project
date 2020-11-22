@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {put, takeEvery } from 'redux-saga/effects';
 
-function* fetchHubNumber(action) {
+function* fetchHubNumber() {
   try{
     const hubNumberResponse = yield axios.get(`/api/hubNumber`);
     yield put({type: 'SET_HUBNUMBER', payload: hubNumberResponse.data.hubNumber});
@@ -13,6 +13,7 @@ function* fetchHubNumber(action) {
 function* addHubNumber(action) {
   try{
     yield axios.put('/api/hubnumber', action.payload)
+    yield put({type: 'FETCH_HUBNUMBER'})
   }catch(error) {
     console.log('error in add hubhumber', error); 
   }

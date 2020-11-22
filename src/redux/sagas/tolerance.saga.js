@@ -5,7 +5,8 @@ import {put, takeEvery} from 'redux-saga/effects';
 
 function* addUserTolerance(action) {
   try {
-    yield axios.put('/api/tolerance', action.payload);  
+    yield axios.put('/api/tolerance', action.payload); 
+    yield put({type: 'FETCH_USER_TOLERANCE'}) 
   }catch(error) {
     console.log('error in post tolerance');  
   }

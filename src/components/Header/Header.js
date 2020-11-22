@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 class Header extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
-    this.props.dispatch({type: 'FETCH_MY_BMS'});
+    // this.props.dispatch({type: 'FETCH_MY_BMS'});
   }
-  componentDidUpdate() {
-    this.props.dispatch({ type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
-    this.props.dispatch({ type: 'FETCH_HUBNUMBER'});
-  }
+  // componentDidUpdate() {
+  //   // this.props.dispatch({ type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
+  //   this.props.dispatch({ type: 'FETCH_HUBNUMBER'});
+  // }
 
   render(){
     return(

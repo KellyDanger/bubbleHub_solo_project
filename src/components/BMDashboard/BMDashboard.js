@@ -9,7 +9,7 @@ class BMDashboard extends Component {
   componentDidMount = () => {
     this.fetchMyBubbleMates();
   }
-
+//retrieves bubblemates for logged in user
   fetchMyBubbleMates = () => {
     console.log('Fetching');
     this.props.dispatch({type: 'FETCH_MY_BMS'})
