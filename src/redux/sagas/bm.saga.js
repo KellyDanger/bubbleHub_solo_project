@@ -23,10 +23,18 @@ function* addBm(action) {
 function* fetchMyBms(){
   try{
     const myBmsResponse = yield axios.get(`/api/bm`)
-    yield console.log('fetching!!!!!', myBmsResponse);
     yield put({type: 'SET_MY_BMS', payload: myBmsResponse.data});
   }catch(error) {
     console.log('error in fetch my bms', error);
+  }
+}
+function* deleteBm(action){
+  try{
+    yield console.log('DELETING', action.payload.id);
+    yield axios.delete(`/api/bm/${action.payload.id}`)
+    yield put({type: 'FETCH_MY_BMS'})
+  }catch(error) {
+    console.log('error in delete bm', error); 
   }
 }
 
@@ -35,6 +43,7 @@ function* bmSaga() {
   yield takeEvery('FETCH_BM', fetchBm);
   yield takeEvery('ADD_BM', addBm);
   yield takeEvery('FETCH_MY_BMS', fetchMyBms);
+  yield takeEvery('DELETE_BM', deleteBm);
 }
 
 export default bmSaga;

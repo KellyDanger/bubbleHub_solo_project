@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
   JOIN "bubble_mates_junction" on "user"."id" = "bm_id"
   WHERE "bubble_mates_junction"."bubble_owner" = $1;`;
   pool.query(queryText, [req.user.id]).then((result) => {
-    console.log('results are', result.rows);
     res.send(result.rows)
   }).catch((error) => {
     console.log('error in get mybms', error);
@@ -38,7 +37,15 @@ router.post('/', (req, res) => {
     res.sendStatus(500)
   })
 })
-
+router.delete('/:id', (req, res) => {
+  console.log('in delete BM', req.params.id, 'logged',req.user.id);
+  let queryText = `DELETE FROM "bubble_mates_junction" WHERE "bubble_owner"= $1 AND "bm_id"=$2;`;
+  pool.query(queryText, [req.user.id, req.params.id]).then((result) => {
+    res.send(result);
+  }).catch((error) => {
+    res.sendStatus(500)
+  })
+})
 
 module.exports = router;
 
