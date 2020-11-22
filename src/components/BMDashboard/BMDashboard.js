@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+// import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class BMDashboard extends Component {
   state={
@@ -26,11 +26,18 @@ class BMDashboard extends Component {
   render() {
     return(
       <div>
+        <div>
+          <p>{this.props.reduxState.bmReducer.id && this.props.reduxState.bmReducer.username}</p>
+        </div>
         <input type="text" placehoder="description" onChange={(event) => this.handleChange(event)}/>
         <button onClick={this.searchUsers}>Search</button>
       </div>
     )
   }
 }
+
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
 
 export default connect(mapStoreToProps)(BMDashboard);
