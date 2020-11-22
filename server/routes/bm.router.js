@@ -13,6 +13,20 @@ router.get('/:email', (req,res) => {
   })
 })
 
+//sends sql query to retrive all bubblemates for logged in user
+router.get('/', (req, res) => {
+  let queryText = `SELECT "user"."name", "user"."hubNumber", "user"."id" FROM "user"
+  JOIN "bubble_mates_junction" on "user"."id" = "bm_id"
+  WHERE "bubble_mates_junction"."bubble_owner" = $1;`;
+  pool.query(queryText, [req.user.id]).then((result) => {
+    console.log('results are', result.rows);
+    res.send(result.rows)
+  }).catch((error) => {
+    console.log('error in get mybms', error);
+    res.sendStatus(500)
+  })
+})
+
 //sends sql query to add a bm relationship to the bm junction table
 router.post('/', (req, res) => {
   console.log('in the BM router', req.user.id, req.body.bmId);

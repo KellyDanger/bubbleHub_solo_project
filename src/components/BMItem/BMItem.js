@@ -5,7 +5,9 @@ class BMItem extends Component {
 
   render(){
     return(
-      <p>{JSON.stringify(this.props.reduxState.bmReducer)}</p>
+      <div>
+        <li key={this.props.bm.id}>BM: {this.props.bm.name} ---HubNumber: {this.props.bm.hubNumber}<button onClick={(event)=>this.props.deleteBm(event, this.props.bm.id )}>Delete</button></li>
+      </div>
     )
   }
 }

@@ -5,10 +5,13 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 
 class ActivitySelect extends Component {
 
-
   componentDidMount = () => {
-    this.props.dispatch({type: 'FETCH_ACTIVITIES'})
+    this.fetchActivities();
     this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});  
+  }
+
+  fetchActivities = () => {
+    this.props.dispatch({type: 'FETCH_ACTIVITIES'})
   }
 
   handleClick = (event, param) => {
