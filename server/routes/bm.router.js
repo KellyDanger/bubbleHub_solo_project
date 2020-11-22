@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
   JOIN "bubble_mates_junction" on "user"."id" = "bm_id"
   WHERE "bubble_mates_junction"."bubble_owner" = $1;`;
   pool.query(queryText, [req.user.id]).then((result) => {
-    console.log('results are', result.rows);
     res.send(result.rows)
   }).catch((error) => {
     console.log('error in get mybms', error);

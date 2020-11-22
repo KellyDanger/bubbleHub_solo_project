@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import {withRouter} from 'react-router';
+// import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class RegisterForm extends Component {
   state = {
@@ -10,7 +11,6 @@ class RegisterForm extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-
     this.props.dispatch({
       type: 'REGISTER',
       payload: {
@@ -18,6 +18,7 @@ class RegisterForm extends Component {
         password: this.state.password,
       },
     });
+    this.props.history.push('/createprofile');
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -30,9 +31,9 @@ class RegisterForm extends Component {
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
-        {this.props.store.errors.registrationMessage && (
+        {this.props.reduxState.errors.registrationMessage && (
           <h3 className="alert" role="alert">
-            {this.props.store.errors.registrationMessage}
+            {this.props.reduxState.errors.registrationMessage}
           </h3>
         )}
         <div>
@@ -67,4 +68,8 @@ class RegisterForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
+
+export default withRouter(connect(mapStoreToProps)(RegisterForm));

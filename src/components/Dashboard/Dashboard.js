@@ -15,7 +15,7 @@ class Dashboard extends Component {
           <ul>
             {this.props.reduxState.myBmReducer[0] && 
             this.props.reduxState.myBmReducer.map((bm) =>{
-            return <li>{bm.name} whose HubNumber is: {bm.hubNumber}</li>
+            return <li key={bm.id}>{bm.name} whose HubNumber is: {bm.hubNumber}</li>
             })}
           </ul>
           <LogOutButton className="log-in" />

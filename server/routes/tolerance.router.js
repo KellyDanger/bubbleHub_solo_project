@@ -9,7 +9,7 @@ router.put('/', (req, res) => {
   pool.query(queryText, [req.body.toleranceNum, req.body.userId]).then(result => {
     res.sendStatus(202)
   }).catch(error => {
-    console.log('error in put', error); 
+    console.log('error in put tol', error); 
     res.sendStatus(500);
   })
 })

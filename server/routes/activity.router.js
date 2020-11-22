@@ -14,8 +14,10 @@ router.get('/', (req, res) => {
 
 //sends selected activity to the activity router
 router.post('/', (req, res) => {
+  console.log('POST', req.body, 'user', req.user.id);
+  
   let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES ($1, $2);`;
-  pool.query(queryText, [req.body[0].id, req.body[1] ]).then((result) => {
+  pool.query(queryText, [req.body.id, req.user.id]).then((result) => {
     res.sendStatus(200)
   }).catch((error) => {
     console.log('error in post');
@@ -24,11 +26,11 @@ router.post('/', (req, res) => {
 })
 
 //sends delete request for activity from logged in user's db
-router.delete('/:user/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   if(req.isAuthenticated()){
     console.log('REQ is', req.params);
   let queryText = `DELETE FROM "user_activities" WHERE "user_id" = $1 AND "activity_id" = $2;`;
-  pool.query(queryText, [req.params.user, req.params.id]).then((result) => {
+  pool.query(queryText, [req.user.id, req.params.id]).then((result) => {
     console.log('success deleting', result);
     res.send(result);
   }).catch((error) => {

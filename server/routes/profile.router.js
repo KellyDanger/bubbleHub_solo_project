@@ -10,7 +10,7 @@ router.put('/', (req, res) => {
   pool.query(queryText, [req.body.name, req.body.email, req.body.city, req.body.state, req.body.userId]).then(result => {
     res.sendStatus(200)
   }).catch(error => {
-    console.log('error in put', error); 
+    console.log('error in put profile', error); 
     res.sendStatus(500)
   }) 
 })

@@ -16,22 +16,18 @@ class ActivitySelect extends Component {
 
   handleClick = (event, param) => {
     event.preventDefault();
-    // this.setState ({ 
-    //   activity: param.id,
-    // })
     this.props.dispatch({
       type:'ADD_USER_ACTIVITY',
-      payload: [param, this.props.reduxState.user.id]
+      payload: param
     })
   }
+
   // Recieves click event and activity as param from ActivityItem.js
   deleteActivity = (event, param) => {
-    // logs the Number here
-    console.log('DELETING', param.id);
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
     this.props.dispatch({
       type: 'DELETE_ACTIVITY',
-      payload: {id: param.id, user: this.props.reduxState.user.id}
+      payload: param
     })
   }
   // submitData = () => {
@@ -45,7 +41,7 @@ class ActivitySelect extends Component {
   submitData = (event, param) => {
     this.props.dispatch({
       type: 'ADD_HUBNUMBER',
-      payload: [param, this.props.reduxState.user.id]
+      payload: {id: param}
     })
     this.props.history.push('/bubblemates')
   }
