@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import mapStoreToProps from '../../redux/mapStoreToProps';
+import BMItem from '../BMItem/BMItem'
 
 class BMDashboard extends Component {
   state={
     searchEmail: null
   }
+  componentDidUpdate = () => {
+    this.fetchMyBubbleMates(this.props.reduxState.user.id);
+  }
+
+  fetchMyBubbleMates = (user) => {
+    console.log('Fetching', user);
+  }
+
 //sets state to user-input
   handleChange = (event) => {
     this.setState({
@@ -35,6 +43,7 @@ class BMDashboard extends Component {
   render() {
     return(
       <div>
+        <BMItem/>
         <div>{this.props.reduxState.bmReducer.id && <div>
           <p>{this.props.reduxState.bmReducer.username}</p>
           <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>

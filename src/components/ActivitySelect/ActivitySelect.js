@@ -4,10 +4,7 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-  // state = {
-  //   activity: null,
-  //   userId: this.props.reduxState.user.id,
-  // }
+
 
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_ACTIVITIES'})

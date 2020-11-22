@@ -23,7 +23,6 @@ class ActivityItem extends Component {
     )
   }
 }
-
 const mapStoreToProps = reduxState => ({
   reduxState
 })
