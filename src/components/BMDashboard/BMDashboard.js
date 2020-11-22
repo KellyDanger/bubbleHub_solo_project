@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import mapStoreToProps from '../../redux/mapStoreToProps';
+import BMItem from '../BMItem/BMItem'
 
 class BMDashboard extends Component {
   state={
     searchEmail: null
   }
+  componentDidMount = () => {
+    this.fetchMyBubbleMates();
+  }
+
+  fetchMyBubbleMates = () => {
+    console.log('Fetching');
+    this.props.dispatch({type: 'FETCH_MY_BMS'})
+  }
+
 //sets state to user-input
   handleChange = (event) => {
     this.setState({
@@ -29,12 +38,24 @@ class BMDashboard extends Component {
       type: 'ADD_BM',
       payload: {bmId: param}
     })
+    this.fetchMyBubbleMates();
+  }
+  
+  //starting of delete route for bms
+  deleteBm = (event, param) => {
+    console.log('deleting', param);
   }
   
 
   render() {
     return(
       <div>
+        <ul>
+          {this.props.reduxState.myBmReducer[0] && 
+          this.props.reduxState.myBmReducer.map((bm) =>{
+            return <BMItem bm={bm} deleteBm={this.deleteBm}/>
+          })}
+        </ul>
         <div>{this.props.reduxState.bmReducer.id && <div>
           <p>{this.props.reduxState.bmReducer.username}</p>
           <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>

@@ -4,14 +4,14 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-  // state = {
-  //   activity: null,
-  //   userId: this.props.reduxState.user.id,
-  // }
 
   componentDidMount = () => {
-    this.props.dispatch({type: 'FETCH_ACTIVITIES'})
+    this.fetchActivities();
     this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});  
+  }
+
+  fetchActivities = () => {
+    this.props.dispatch({type: 'FETCH_ACTIVITIES'})
   }
 
   handleClick = (event, param) => {
@@ -47,6 +47,7 @@ class ActivitySelect extends Component {
       type: 'ADD_HUBNUMBER',
       payload: [param, this.props.reduxState.user.id]
     })
+    this.props.history.push('/bubblemates')
   }
 
   render() {

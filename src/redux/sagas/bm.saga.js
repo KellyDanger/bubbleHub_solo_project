@@ -18,11 +18,23 @@ function* addBm(action) {
     console.log('error in add bm', error);
   }
 }
+//sends axios request to retrieve all bms for the logged in user
+function* fetchMyBms(){
+  try{
+    const myBmsResponse = yield axios.get(`/api/bm`)
+    yield console.log('fetching!!!!!', myBmsResponse);
+    
+    yield put({type: 'SET_MY_BMS', payload: myBmsResponse.data});
+  }catch(error) {
+    console.log('error in fetch my bms', error);
+  }
+}
 
 
 function* bmSaga() {
   yield takeEvery('FETCH_BM', fetchBm);
   yield takeEvery('ADD_BM', addBm);
+  yield takeEvery('FETCH_MY_BMS', fetchMyBms);
 }
 
 export default bmSaga;
