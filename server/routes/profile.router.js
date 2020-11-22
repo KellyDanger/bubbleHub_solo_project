@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//adds user's data to DB
 router.put('/', (req, res) => {
   let queryText = `UPDATE "user" 
   SET "name" = $1, "email" = $2, "city" = $3, "state" = $4

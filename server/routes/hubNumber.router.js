@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
   })
 })
 
+//Adds hubnumber to DB
 router.put('/', (req, res) => {
   let queryText = `UPDATE "user" SET "hubNumber" = $1 WHERE "id" = $2;`;
   pool.query(queryText, [req.body.id, req.user.id]).then(result => {

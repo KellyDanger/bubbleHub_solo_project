@@ -1,14 +1,11 @@
 import React from 'react';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
   <div className="container">
     <div>
-      <p>This about page is for anyone to read!</p>
+      <p>The BubbleHub is a place to simplify your quarantine conversations. Register to start a profile,and fill out our simple surveys. Tell us how concerned you are about Covid-19 in the risk tolerance survey, and see what your Tolerance Number is. Then give us a picture of how you move through your life in the Activities Survey to see your own HubNumber, a numerical representation of how risky your day to day activities are. </p>
+      <p>Next start adding your bubblemates. Search for BubbleMates by email and see if they are a match! If they are, then bubble up and enjoy the pandemic!</p>
     </div>
   </div>
 );

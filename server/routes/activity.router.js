@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//gets all activiites from DB to populate activities survey
 router.get('/', (req, res) => {
   let queryText = `SELECT * FROM "activities";`;
   pool.query(queryText).then((result)=> {
@@ -15,7 +16,6 @@ router.get('/', (req, res) => {
 //sends selected activity to the activity router
 router.post('/', (req, res) => {
   console.log('POST', req.body, 'user', req.user.id);
-  
   let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES ($1, $2);`;
   pool.query(queryText, [req.body.id, req.user.id]).then((result) => {
     res.sendStatus(200)
@@ -41,24 +41,5 @@ router.delete('/:id', (req, res) => {
     res.sendStatus(403)
   } 
 })
-// TODO FIX THIS ERROR
-
-
-//TODO post to user_activity table
-// router.post('/', (req, res) => {
-//   console.log('req is', req.body.activitiesArray, req.body.userId);
-//   let activitiesArray = req.body.activitiesArray
-//   for(let val of activitiesArray) {
-//     console.log('each item is', val);
-//     let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES (${val}, ${req.body.userId});`;
-//     pool.query(queryText).then((result) => {  
-//   }).catch((error) => {
-//     console.log('error in post');
-//     return res.sendStatus(500);
-//   })
-//   } res.sendStatus(200)
-// })
-
-
 
 module.exports = router;

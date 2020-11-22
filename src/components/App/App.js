@@ -30,6 +30,10 @@ import Dashboard from '../Dashboard/Dashboard';
 import './App.css';
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
+    this.props.dispatch({type: 'FETCH_HUBNUMBER'});
+  }
 
 
   render() {
