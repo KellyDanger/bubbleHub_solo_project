@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import BMItem from '../BMItem/BMItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class Dashboard extends Component {
@@ -16,7 +15,7 @@ class Dashboard extends Component {
           <ul>
             {this.props.reduxState.myBmReducer[0] && 
             this.props.reduxState.myBmReducer.map((bm) =>{
-            return <BMItem bm={bm} deleteBm={this.deleteBm}/>
+            return <li>{bm.name} whose HubNumber is: {bm.hubNumber}</li>
             })}
           </ul>
           <LogOutButton className="log-in" />

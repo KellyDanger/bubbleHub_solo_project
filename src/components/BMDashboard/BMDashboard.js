@@ -44,6 +44,10 @@ class BMDashboard extends Component {
   //starting of delete route for bms
   deleteBm = (event, param) => {
     console.log('deleting', param);
+    this.props.dispatch({
+      type: 'DELETE_BM',
+      payload: {id:param}
+    })
   }
   
 
