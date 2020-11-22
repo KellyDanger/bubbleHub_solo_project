@@ -32,4 +32,4 @@ const mapStoreToProps = reduxState => ({
 
 export default connect(mapStoreToProps)(Dashboard);
 
-{/* <p>Your ID is: {this.props.store.user.id}</p> */}
+

@@ -56,7 +56,7 @@ class BMDashboard extends Component {
         <ul>
           {this.props.reduxState.myBmReducer[0] && 
           this.props.reduxState.myBmReducer.map((bm) =>{
-            return <BMItem bm={bm} deleteBm={this.deleteBm}/>
+            return <BMItem key={bm.id} bm={bm} deleteBm={this.deleteBm}/>
           })}
         </ul>
         <div>{this.props.reduxState.bmReducer.id && <div>
@@ -76,7 +76,3 @@ const mapStoreToProps = reduxState => ({
 })
 
 export default connect(mapStoreToProps)(BMDashboard);
-{/* <div>
-<p>{this.props.reduxState.bmReducer.username}</p>
-<button>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
-</div>} */}
