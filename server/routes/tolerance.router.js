@@ -14,6 +14,7 @@ router.put('/', (req, res) => {
   })
 })
 
+//gets the tolerance number from logged in user
 router.get('/', (req, res) => {
   // console.log('USER IS', req.params.id);
   let queryText = `SELECT "tolerance" FROM "user" WHERE "id" = $1;`;

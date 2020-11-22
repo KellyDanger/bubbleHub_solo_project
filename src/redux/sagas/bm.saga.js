@@ -31,8 +31,8 @@ function* fetchMyBms(){
 function* deleteBm(action){
   try{
     yield console.log('DELETING', action.payload.id);
-    yield axios.delete(`/api/bm/${action.payload.id}`)
-    yield put({type: 'FETCH_MY_BMS'})
+    yield axios.delete(`/api/bm/${action.payload.id}`);
+    yield put({type: 'FETCH_MY_BMS'});
   }catch(error) {
     console.log('error in delete bm', error); 
   }

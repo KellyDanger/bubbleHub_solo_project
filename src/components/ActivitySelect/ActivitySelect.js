@@ -8,11 +8,11 @@ class ActivitySelect extends Component {
   componentDidMount = () => {
     this.fetchActivities(); 
   }
-
+//load all the activities from the DB
   fetchActivities = () => {
     this.props.dispatch({type: 'FETCH_ACTIVITIES'})
   }
-
+//on click, this adds the targeted activity to this user's activities
   handleClick = (event, param) => {
     event.preventDefault();
     this.props.dispatch({
@@ -20,7 +20,6 @@ class ActivitySelect extends Component {
       payload: param
     })
   }
-
   // Recieves click event and activity as param from ActivityItem.js
   deleteActivity = (event, param) => {
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
@@ -29,14 +28,7 @@ class ActivitySelect extends Component {
       payload: param
     })
   }
-  // submitData = () => {
-  //     this.props.dispatch({
-  //       type: 'FETCH_HUBNUMBER',
-  //       payload: this.props.reduxState.user.id
-  //     })
-  // this.props.history.push('/');
-  // }
-
+//Adds the caluclated hub number to the user's HubNumber in the DB
   submitData = (event, param) => {
     this.props.dispatch({
       type: 'ADD_HUBNUMBER',

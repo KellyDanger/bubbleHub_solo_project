@@ -37,8 +37,9 @@ router.post('/', (req, res) => {
     res.sendStatus(500)
   })
 })
+
+//deletes selected bm from user's bubble
 router.delete('/:id', (req, res) => {
-  console.log('in delete BM', req.params.id, 'logged',req.user.id);
   let queryText = `DELETE FROM "bubble_mates_junction" WHERE "bubble_owner"= $1 AND "bm_id"=$2;`;
   pool.query(queryText, [req.user.id, req.params.id]).then((result) => {
     res.send(result);
