@@ -26,9 +26,11 @@ class BMDashboard extends Component {
   render() {
     return(
       <div>
-        <div>
-          <p>{this.props.reduxState.bmReducer.id && this.props.reduxState.bmReducer.username}</p>
-        </div>
+        <div>{this.props.reduxState.bmReducer.id && <div>
+          <p>{this.props.reduxState.bmReducer.username}</p>
+          <button>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
+        </div>}
+      </div>
         <input type="text" placehoder="description" onChange={(event) => this.handleChange(event)}/>
         <button onClick={this.searchUsers}>Search</button>
       </div>
@@ -41,3 +43,7 @@ const mapStoreToProps = reduxState => ({
 })
 
 export default connect(mapStoreToProps)(BMDashboard);
+{/* <div>
+<p>{this.props.reduxState.bmReducer.username}</p>
+<button>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
+</div>} */}
