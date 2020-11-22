@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
   })
 });
 
+//sends selected activity to the activity router
 router.post('/', (req, res) => {
-  console.log('REQ is', req.body[0].id, req.body[1]);
   let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES ($1, $2);`;
   pool.query(queryText, [req.body[0].id, req.body[1] ]).then((result) => {
     res.sendStatus(200)
@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
   })
 })
 
+//sends delete request for activity from logged in user's db
 router.delete('/:user/:id', (req, res) => {
   if(req.isAuthenticated()){
     console.log('REQ is', req.params);

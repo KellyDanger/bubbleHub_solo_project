@@ -13,6 +13,20 @@ router.get('/:email', (req,res) => {
   })
 })
 
+//sends sql query to add a bm relationship to the bm junction table
+router.post('/', (req, res) => {
+  console.log('in the BM router', req.user.id, req.body.bmId);
+  let queryText = `INSERT INTO "bubble_mates_junction" ("bubble_owner", "bm_id") VALUES ($1, $2);`;
+  pool.query(queryText, [req.user.id, req.body.bmId]).then((result) => {
+    res.sendStatus(200)
+  }).catch((error) => {
+    console.log('error in post');
+    res.sendStatus(500)
+  })
+})
+
+
 module.exports = router;
 
 // allen.joeg@gmail.com
+// req.user.id

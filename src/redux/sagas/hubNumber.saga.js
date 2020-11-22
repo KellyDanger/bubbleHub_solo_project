@@ -12,7 +12,6 @@ function* fetchHubNumber(action) {
 
 function* addHubNumber(action) {
   try{
-    yield console.log('ACTION IS', action.payload);
     yield axios.put('/api/hubnumber', action.payload)
   }catch(error) {
     console.log('error in add hubhumber', error); 
