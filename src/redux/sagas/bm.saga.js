@@ -14,6 +14,7 @@ function* fetchBm(action) {
 function* addBm(action) {
   try{
     yield axios.post('/api/bm', action.payload)
+    yield put({type:'FETCH_MY_BMS'})
   }catch(error){
     console.log('error in add bm', error);
   }
@@ -23,7 +24,6 @@ function* fetchMyBms(){
   try{
     const myBmsResponse = yield axios.get(`/api/bm`)
     yield console.log('fetching!!!!!', myBmsResponse);
-    
     yield put({type: 'SET_MY_BMS', payload: myBmsResponse.data});
   }catch(error) {
     console.log('error in fetch my bms', error);

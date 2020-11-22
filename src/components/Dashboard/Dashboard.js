@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import BMItem from '../BMItem/BMItem';
+// import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class Dashboard extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
+  
   render() {
     return (
-      <div>
-        <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
-        <p>Your ID is: {this.props.store.user.id}</p>
-        <LogOutButton className="log-in" />
-      </div>
+      <>
+        <div>
+          <h1 id="welcome">Welcome, {this.props.reduxState.user.username}!</h1>
+          <p>Your Current HubMates Are</p>
+          <ul>
+            {this.props.reduxState.myBmReducer[0] && 
+            this.props.reduxState.myBmReducer.map((bm) =>{
+            return <BMItem bm={bm} deleteBm={this.deleteBm}/>
+            })}
+          </ul>
+          <LogOutButton className="log-in" />
+        </div>
+      </>
     );
   }
 }
 
-// this allows us to use <App /> in index.js
+
+const mapStoreToProps = reduxState => ({
+  reduxState
+})
+
 export default connect(mapStoreToProps)(Dashboard);
+
+{/* <p>Your ID is: {this.props.store.user.id}</p> */}

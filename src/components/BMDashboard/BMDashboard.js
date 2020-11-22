@@ -38,7 +38,7 @@ class BMDashboard extends Component {
       type: 'ADD_BM',
       payload: {bmId: param}
     })
-    this.fetchMyBubbleMates();
+    // this.fetchMyBubbleMates();
   }
   
   //starting of delete route for bms

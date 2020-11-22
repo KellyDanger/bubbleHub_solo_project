@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+// import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -23,13 +23,14 @@ import CreateProfile from '../CreateProfile/CreateProfile';
 import RiskTolerance from '../RiskTolerance/RiskTolerance';
 import ActivitySelect from '../ActivitySelect/ActivitySelect';
 import BMDashboard from '../BMDashboard/BMDashboard';
+import Dashboard from '../Dashboard/Dashboard';
 
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
-    
+    this.props.dispatch({type: 'FETCH_MY_BMS'});
   }
   componentDidUpdate() {
     this.props.dispatch({ type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
@@ -68,7 +69,7 @@ class App extends Component {
               // logged in shows UserPage else shows LoginPage
               exact
               path="/user"
-              component={UserPage}
+              component={Dashboard}
             />
 
             <ProtectedRoute
