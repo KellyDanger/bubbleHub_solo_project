@@ -6,8 +6,7 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 class ActivitySelect extends Component {
 
   componentDidMount = () => {
-    this.fetchActivities();
-    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});  
+    this.fetchActivities(); 
   }
 
   fetchActivities = () => {
