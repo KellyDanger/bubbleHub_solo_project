@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Link} from 'react-router-dom';
 import {withRouter} from 'react-router';
 
 
@@ -16,12 +16,14 @@ class Header extends Component {
       <>
         <Router>
           <Link to="/home">
-            <h1>BubbleHub</h1>
+            <div className="row"><h1 className="col-sm-12">BubbleHub</h1></div>
           </Link>
         </Router>
-        <div id="numRender">
-          <h3>Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h3>
-          <h3>Your Hub Number is: {this.props.reduxState.hubNumberReducer}</h3>
+        <div id="numRender" className="container">
+          <div className="row">
+            <h2 className="col-sm-6">Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h2>
+            <h2 className="col-sm-6">Your Hub Number is: {this.props.reduxState.hubNumberReducer}</h2>
+          </div>
         </div>
         
       </>
