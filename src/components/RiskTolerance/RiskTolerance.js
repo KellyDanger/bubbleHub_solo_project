@@ -30,7 +30,6 @@ class RiskTolerance extends Component {
   render() {
     return(
       <>
-        <p>{this.state.toleranceNum}</p>
         <div className="toleranceForm">
           <input type="radio" id="1" name="tolerance" value="1" onChange={(event) => this.handleCheck(event, '1')} />
           <label htmlFor="1">Level 1 stuff</label><br></br>

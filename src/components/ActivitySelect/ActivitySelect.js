@@ -40,12 +40,11 @@ class ActivitySelect extends Component {
   render() {
     return(
       <div>
-        <table>
+        <table className="table-striped">
           <thead>
             <tr>
               <th>Activity</th>
-              <th>Add</th>
-              <th>Remove</th>
+              <th colSpan='2' className='text-center'>Do You Do This</th>
             </tr>
             </thead>
             <tbody>

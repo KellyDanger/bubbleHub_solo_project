@@ -33,7 +33,7 @@ const Nav = (props) => {
             <Link className="nav-link" to="/createprofile">Edit Profile</Link>
             <Link className="nav-link" to="/bubblemates">BubbleMates</Link>
             <Link className="nav-link" to="/risktolerance">Tolerance</Link>
-            <Link className="nav-link" to="/activityselect">Activities</Link>
+            <Link className="nav-link" to="/activityselect">Edit Activities</Link>
             <LogOutButton className="nav-link" />   
           </>
         )}

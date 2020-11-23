@@ -64,7 +64,8 @@ class BMDashboard extends Component {
           <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
         </div>}
       </div>
-        <input type="text" placehoder="description" onChange={(event) => this.handleChange(event)}/>
+        <label htmlFor='searchBm'>Enter a Friend's Email Address to Find Them on BubbleHub</label>
+        <input id="searchBm" type="text" placehoder="email" onChange={(event) => this.handleChange(event)}/>
         <button onClick={this.searchUsers}>Search</button>
       </div>
     )
