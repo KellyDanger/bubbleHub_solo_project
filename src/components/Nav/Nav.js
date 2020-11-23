@@ -31,9 +31,9 @@ const Nav = (props) => {
         {props.store.user.id && (
           <>
             <Link className="nav-link" to="/createprofile">Edit Profile</Link>
-            <Link className="nav-link" to="/bubblemates">BubbleMates</Link>
             <Link className="nav-link" to="/risktolerance">Tolerance</Link>
             <Link className="nav-link" to="/activityselect">Edit Activities</Link>
+            <Link className="nav-link" to="/bubblemates">BubbleMates</Link>
             <LogOutButton className="nav-link" />   
           </>
         )}

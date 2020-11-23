@@ -39,7 +39,7 @@ class ActivitySelect extends Component {
 
   render() {
     return(
-      <div>
+      <div className="container">
         <table className="table-striped">
           <thead>
             <tr>

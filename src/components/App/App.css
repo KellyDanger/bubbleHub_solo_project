@@ -35,6 +35,11 @@ img {
   outline: 0;
   cursor: pointer;
 }
+.nav {
+  width: 65%;
+  margin: auto;
+  padding-left: 1.2%;
+}
 
 /* --------------------------------------------------------------------------------
 Container
@@ -134,3 +139,8 @@ input {
   border-radius: 25%;
 }
 /* -------CUSTOM STYLING DEV  */
+.table-striped {
+  width: 60%;
+  margin: 0px auto;
+}
+

@@ -5,6 +5,10 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 
 class Dashboard extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
+  componentDidMount = () => {
+    this.props.dispatch({type: 'FETCH_MY_BMS'});
+  }
+  
   
   render() {
     return (
