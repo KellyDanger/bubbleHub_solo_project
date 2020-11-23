@@ -29,7 +29,7 @@ img {
   padding: 10px 20px;
   border-radius: 100%;
   box-shadow: 5px 5px 5px #1b0352;
-  background-color: #96e00266;
+  background-color: transparent;
   color: #1b0352;
   font-size: 1.1rem;
   outline: 0;
@@ -58,7 +58,7 @@ button, .btn {
   padding: 10px 20px;
   border-radius: 100%;
   box-shadow: 5px 5px 5px #1b0352;
-  background-color: #96e00266;
+  background-color: transparent;
   color: #1b0352;
   font-size: 1.1rem;
   outline: 0;
@@ -136,7 +136,7 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
-  border-radius: 25%;
+  border-radius: 15%;
 }
 /* -------CUSTOM STYLING DEV  */
 .table-striped {
