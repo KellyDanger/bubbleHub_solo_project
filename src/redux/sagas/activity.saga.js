@@ -10,6 +10,16 @@ function* fetchActivities() {
     console.log('Error in fetch activities',error);
   }
 }
+//fetch activities for logged in user
+function* fetchUserActivities(action){
+  try{
+    const userActivityResponse = yield axios.get(`api/activities/${action.payload}`)
+    yield put({type: `SET_USER_ACTIVITIES`, payload: userActivityResponse.data})
+  }catch(error){
+    console.log('error in fetch user activities', error);  
+  }
+}
+
 function* addUserActivity (action) {
   // url is /api/activities :id from payload
   try{
@@ -36,6 +46,7 @@ function* activitySaga() {
     yield takeEvery('FETCH_ACTIVITIES', fetchActivities);
     yield takeEvery('ADD_USER_ACTIVITY', addUserActivity);
     yield takeEvery('DELETE_ACTIVITY', deleteActivity);
+    yield takeEvery('FETCH_USER_ACTIVITIES', fetchUserActivities)
   }
 
 export default activitySaga;

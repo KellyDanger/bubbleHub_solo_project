@@ -5,13 +5,40 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Nerko One', cursive, sans-serif;
   margin: 0px;
+  background-color: #ae97e4;
+  color: #1b0352;
+}
+h1 {
+  color: #1b0352;
+  font-size: 80px;
+}
+#welcome {
+  color: #1b0352;
+  font-size: 60px;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
+}
+.nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px #1b0352;
+  background-color: #1b03522E;
+  color: #1b0352;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+}
+.nav {
+  width: 65%;
+  margin: auto;
+  padding-left: 1.2%;
 }
 
 /* --------------------------------------------------------------------------------
@@ -26,14 +53,13 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
+button, .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  border-radius: 100%;
+  box-shadow: 5px 5px 5px #1b0352;
+  background-color: #1b03522E;
+  color: #1b0352;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -54,9 +80,10 @@ Button
   width: 100%;
 }
 
-.btn:hover {
-  background-color: #008183;
+button:hover, .nav-link:hover, .btn:hover{
+  background-color: #96e002;
   text-decoration: none;
+  color: #1b0352;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -64,7 +91,7 @@ Button
   padding: 0;
   border-width: 0;
   border-bottom: 1px solid #444;
-  border-radius: 0;
+  border-radius: 100%;
   background: none;
   font: inherit;
   color: #444;
@@ -101,16 +128,22 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
+  background-color: #a09bab;
+  border-radius: 100%;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
 input {
   margin: 5px;
   margin-bottom: 10px;
+  border-radius: 15%;
 }
 /* -------CUSTOM STYLING DEV  */
-table, th, td {
-  border: 1px solid black;
+.table-striped {
+  width: 60%;
+  margin: 0px auto;
+}
+
+.chosenAct {
+  background-color: tomato;
 }
