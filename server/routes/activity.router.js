@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 //gets all activies for the logged in user
 router.get(`/:id`, (req, res) => {
-  let queryText = `SELECT "activities"."description", "activities"."riskLevel" FROM "activities"
+  let queryText = `SELECT "activities"."id","activities"."description", "activities"."riskLevel", "user_activities"."active" FROM "activities"
   JOIN "user_activities" ON "activities"."id" = "user_activities"."activity_id"
   JOIN "user" on "user"."id" = "user_activities"."user_id"
   WHERE "user"."id" = $1;`;

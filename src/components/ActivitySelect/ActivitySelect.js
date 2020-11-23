@@ -4,11 +4,30 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-
+  state = {
+    activeArray: []
+  }
   componentDidMount = () => {
     this.fetchActivities();
     this.fetchUserActivities(); 
+    this.activeArrayBuilder(this.props.reduxState.activityReducer, this.props.reduxState.userActivityReducer)
   }
+  
+  activeArrayBuilder = (mainArray, userArray) => {
+    let tempArray = [];
+    // console.log('USERARRAY', userArray);
+    // console.log('MAIN', mainArray);
+    for(let userActivity of userArray) {
+      tempArray.push(userActivity)
+      }
+    for(let activity of mainArray) {
+      tempArray.push(activity)
+     }
+    console.log('ARRAY IS', tempArray); 
+    return tempArray
+  }
+
+
 //load all the activities from the DB
   fetchActivities = () => {
     this.props.dispatch({type: 'FETCH_ACTIVITIES'})
@@ -42,6 +61,7 @@ class ActivitySelect extends Component {
     this.props.history.push('/bubblemates')
   }
   render() {
+
     return(
       <>
             {/* WILL NEED TO SEND CLICKED OR NOT CLICKED IN PROP HERE AND RENDER OPTIONS IN ACTIVITY ITEM  */}
@@ -52,15 +72,15 @@ class ActivitySelect extends Component {
                 <th>Activity</th>
                 <th colSpan='2' className='text-center'>Do You Do This</th>
               </tr>
-              </thead>
-              <tbody>
-                {this.props.reduxState.activityReducer.map((activity) => {
-                  return (
-                    <tr key={activity.id}>
-                      <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-                    </tr>
-                  )
-                })} 
+            </thead>
+            <tbody>
+              {this.props.reduxState.activityReducer.map((activity) => {
+                return (
+                  <tr key={activity.id}>
+                    <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+                  </tr>
+                )
+              })}
             </tbody>
         </table>
         <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
@@ -89,6 +109,9 @@ class ActivitySelect extends Component {
 //     }
 //   })}
 // })}
+
+// ----------
+ 
 
 
 const mapStoreToProps = reduxState => ({
