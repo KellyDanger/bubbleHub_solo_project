@@ -18,9 +18,6 @@ const Nav = (props) => {
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">BubbleHub</h2>
-      </Link>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
