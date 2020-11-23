@@ -21,6 +21,7 @@ class Header extends Component {
             </div>
           </Link>
         </Router>
+        {this.props.reduxState.user.id && 
         <div id="numRender">
           <div className="row">
             <h2 className="col-sm-3" >Hello {this.props.reduxState.user.name}</h2>
@@ -28,7 +29,7 @@ class Header extends Component {
             <h2 className="col-sm-3">Your HubNumber is: {this.props.reduxState.hubNumberReducer}</h2>
           </div>
         </div>
-        
+        }
       </div>
     )
   }

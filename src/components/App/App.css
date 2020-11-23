@@ -144,3 +144,6 @@ input {
   margin: 0px auto;
 }
 
+.chosenAct {
+  background-color: tomato;
+}

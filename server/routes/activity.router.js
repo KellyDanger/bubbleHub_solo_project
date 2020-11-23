@@ -12,6 +12,19 @@ router.get('/', (req, res) => {
     res.sendStatus(500);
   })
 });
+//gets all activies for the logged in user
+router.get(`/:id`, (req, res) => {
+  let queryText = `SELECT "activities"."description", "activities"."riskLevel" FROM "activities"
+  JOIN "user_activities" ON "activities"."id" = "user_activities"."activity_id"
+  JOIN "user" on "user"."id" = "user_activities"."user_id"
+  WHERE "user"."id" = $1;`;
+  pool.query(queryText, [req.params.id]).then((result) => {
+    res.send(result.rows)
+  }).catch((error) => {
+    console.log('error in getting user activities');
+    res.sendStatus(500)
+  })
+})
 
 //sends selected activity to the activity router
 router.post('/', (req, res) => {

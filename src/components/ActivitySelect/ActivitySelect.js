@@ -6,11 +6,16 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 class ActivitySelect extends Component {
 
   componentDidMount = () => {
-    this.fetchActivities(); 
+    this.fetchActivities();
+    this.fetchUserActivities(); 
   }
 //load all the activities from the DB
   fetchActivities = () => {
     this.props.dispatch({type: 'FETCH_ACTIVITIES'})
+  }
+//fetch all the activities for the logged in user and store in useractivity reducer
+  fetchUserActivities = () => {
+    this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id})
   }
 //on click, this adds the targeted activity to this user's activities
   handleClick = (event, param) => {
@@ -36,9 +41,9 @@ class ActivitySelect extends Component {
     })
     this.props.history.push('/bubblemates')
   }
-
   render() {
     return(
+      <>
       <div className="container">
         <table className="table-striped">
           <thead>
@@ -48,20 +53,62 @@ class ActivitySelect extends Component {
             </tr>
             </thead>
             <tbody>
-              {this.props.reduxState.activityReducer.map((activity) => {
-                return (
-                  <tr key={activity.id}>
-                    <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-                  </tr>
-                )
-              })}
+            {/* WILL NEED TO SEND CLICKED OR NOT CLICKED IN PROP HERE AND RENDER OPTIONS IN ACTIVITY ITEM  */}
+              
             </tbody>
         </table>
         <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
       </div>
+      </>
     )
   }
 }
+
+//TRIAL
+// {this.props.reduxState.activityReducer.map((activity) => {
+//   {this.props.reduxState.userActivityReducer.map((userActivity) => {
+//     if(activity.description === userActivity.description){
+
+//       return (               
+//         <tr>
+//           <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+//         </tr>
+//       )
+//     }else {
+//       return (
+//         <tr className='unchosenAct'>
+//           <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+//         </tr>
+//       )
+//     }
+//   })}
+// })}
+
+//   render() {
+//     return(
+//       <div className="container">
+//         <table className="table-striped">
+//           <thead>
+//             <tr>
+//               <th>Activity</th>
+//               <th colSpan='2' className='text-center'>Do You Do This</th>
+//             </tr>
+//             </thead>
+//             <tbody>
+//               {this.props.reduxState.activityReducer.map((activity) => {
+//                 return (
+//                   <tr key={activity.id}>
+//                     <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+//                   </tr>
+//                 )
+//               })}
+//             </tbody>
+//         </table>
+//         <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
+//       </div>
+//     )
+//   }
+// }
 const mapStoreToProps = reduxState => ({
   reduxState
 })
