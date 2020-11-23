@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BMItem from '../BMItem/BMItem'
+import BMItem from '../BMItem/BMItem';
+import swal from 'sweetalert';
 
 class BMDashboard extends Component {
   state={
@@ -45,6 +46,11 @@ class BMDashboard extends Component {
       payload: {id:param}
     })
   }
+  //mismatch alert
+  mmAlert = (alert) => {
+    swal(alert)
+  }
+
 
   render() {
     return(
@@ -58,11 +64,14 @@ class BMDashboard extends Component {
         <div>{this.props.reduxState.bmReducer.id && 
           <div>
             <p>{this.props.reduxState.bmReducer.username}: {this.props.reduxState.bmReducer.hubNumber}</p>
+            {/* if the searched bubblemate's hubNumber is lower than the user's tolerance number, user can add them to their bubble */}
             {this.props.reduxState.bmReducer.hubNumber <= this.props.reduxState.user.tolerance &&
               <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
             } 
             {this.props.reduxState.bmReducer.hubNumber > this.props.reduxState.user.tolerance &&
-              <p>Uh Oh! {this.props.reduxState.bmReducer.username}'s hubNumber is higher than your tolerance!</p>
+              <>
+              {this.mmAlert(`Uh oh! ${this.props.reduxState.bmReducer.username} is taking too many risks for you!`)}
+              </>
             } 
           </div>}
         </div>
