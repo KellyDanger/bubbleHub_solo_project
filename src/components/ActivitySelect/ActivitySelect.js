@@ -64,8 +64,8 @@ class ActivitySelect extends Component {
 
     return(
       <>
-            {/* WILL NEED TO SEND CLICKED OR NOT CLICKED IN PROP HERE AND RENDER OPTIONS IN ACTIVITY ITEM  */}
         <div className="container">
+        <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
           <table className="table-striped">
             <thead>
               <tr>
@@ -83,7 +83,6 @@ class ActivitySelect extends Component {
               })}
             </tbody>
         </table>
-        <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
       </div>
       </>
     )

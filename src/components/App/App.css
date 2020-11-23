@@ -8,7 +8,7 @@ body {
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-family: 'Nerko One', cursive, sans-serif;
   margin: 0px;
-  background-color: #e1f9fa;
+  background-color: #ae97e4;
   color: #1b0352;
 }
 h1 {
@@ -29,7 +29,7 @@ img {
   padding: 10px 20px;
   border-radius: 100%;
   box-shadow: 5px 5px 5px #1b0352;
-  background-color: transparent;
+  background-color: #1b03522E;
   color: #1b0352;
   font-size: 1.1rem;
   outline: 0;
@@ -58,7 +58,7 @@ button, .btn {
   padding: 10px 20px;
   border-radius: 100%;
   box-shadow: 5px 5px 5px #1b0352;
-  background-color: transparent;
+  background-color: #1b03522E;
   color: #1b0352;
   font-size: 1.1rem;
   outline: 0;
@@ -80,7 +80,7 @@ button, .btn {
   width: 100%;
 }
 
-button:hover, .nav-link:hover{
+button:hover, .nav-link:hover, .btn:hover{
   background-color: #96e002;
   text-decoration: none;
   color: #1b0352;
