@@ -44,17 +44,23 @@ class ActivitySelect extends Component {
   render() {
     return(
       <>
-      <div className="container">
-        <table className="table-striped">
-          <thead>
-            <tr>
-              <th>Activity</th>
-              <th colSpan='2' className='text-center'>Do You Do This</th>
-            </tr>
-            </thead>
-            <tbody>
             {/* WILL NEED TO SEND CLICKED OR NOT CLICKED IN PROP HERE AND RENDER OPTIONS IN ACTIVITY ITEM  */}
-              
+        <div className="container">
+          <table className="table-striped">
+            <thead>
+              <tr>
+                <th>Activity</th>
+                <th colSpan='2' className='text-center'>Do You Do This</th>
+              </tr>
+              </thead>
+              <tbody>
+                {this.props.reduxState.activityReducer.map((activity) => {
+                  return (
+                    <tr key={activity.id}>
+                      <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+                    </tr>
+                  )
+                })} 
             </tbody>
         </table>
         <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
@@ -84,31 +90,7 @@ class ActivitySelect extends Component {
 //   })}
 // })}
 
-//   render() {
-//     return(
-//       <div className="container">
-//         <table className="table-striped">
-//           <thead>
-//             <tr>
-//               <th>Activity</th>
-//               <th colSpan='2' className='text-center'>Do You Do This</th>
-//             </tr>
-//             </thead>
-//             <tbody>
-//               {this.props.reduxState.activityReducer.map((activity) => {
-//                 return (
-//                   <tr key={activity.id}>
-//                     <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-//                   </tr>
-//                 )
-//               })}
-//             </tbody>
-//         </table>
-//         <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
-//       </div>
-//     )
-//   }
-// }
+
 const mapStoreToProps = reduxState => ({
   reduxState
 })
