@@ -21,6 +21,7 @@ class Dashboard extends Component {
     this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id});
   }
 
+
   render() {
     return (
       <>
