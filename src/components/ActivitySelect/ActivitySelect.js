@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
 import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -10,22 +11,23 @@ class ActivitySelect extends Component {
   componentDidMount = () => {
     this.fetchActivities();
     this.fetchUserActivities(); 
-    this.activeArrayBuilder(this.props.reduxState.activityReducer, this.props.reduxState.userActivityReducer)
+    // this.activeArrayBuilder(this.props.reduxState.activityReducer, this.props.reduxState.userActivityReducer)
   }
   
-  activeArrayBuilder = (mainArray, userArray) => {
-    let tempArray = [];
-    // console.log('USERARRAY', userArray);
-    // console.log('MAIN', mainArray);
-    for(let userActivity of userArray) {
-      tempArray.push(userActivity)
-      }
-    for(let activity of mainArray) {
-      tempArray.push(activity)
-     }
-    console.log('ARRAY IS', tempArray); 
-    return tempArray
-  }
+  // activeArrayBuilder = (mainArray, userArray) => {
+  //   let megaArray = mainArray.concat(userArray)
+  //   let tempArray = [];
+  //   megaArray.sort((a,b) => a.description.localeCompare(b.description))
+  //   console.log('DIGGING', megaArray[0].id);
+    
+  //   for(let i = 0; i < megaArray.length; i++){
+  //     if(megaArray[i] === megaArray[i+1]) {
+  //       console.log('at I', megaArray[i]);
+  //       tempArray.push(megaArray[i])
+  //     }
+  //   }
+  //   console.log('ARRAY IS', tempArray); 
+  // }
 
 
 //load all the activities from the DB
@@ -66,7 +68,7 @@ class ActivitySelect extends Component {
       <>
         <div className="container">
         <button onClick={(event) => this.submitData(event, this.props.reduxState.hubNumberReducer)}>Submit</button>
-          <table className="table-striped">
+        <table className="table-striped">
             <thead>
               <tr>
                 <th>Activity</th>

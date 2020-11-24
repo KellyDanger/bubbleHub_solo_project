@@ -7,7 +7,7 @@ class BMItem extends Component {
   render(){
     return(
       <div>
-        <li>BM: {this.props.bm.name} ---HubNumber: {this.props.bm.hubNumber}<button onClick={(event)=>this.props.deleteBm(event, this.props.bm.id )}>Delete</button></li>
+        <div>BM: {this.props.bm.name} ---HubNumber: {this.props.bm.hubNumber}<button onClick={(event)=>this.props.deleteBm(event, this.props.bm.id )}>Delete</button></div>
       </div>
     )
   }

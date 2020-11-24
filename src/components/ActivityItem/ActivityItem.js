@@ -17,7 +17,7 @@ class ActivityItem extends Component {
         </td>
         <td>
           {/* Fires off deleteActivity function with this activity sent as a prop */}
-          <button className='deleteActivity' onClick={(event) => this.props.deleteActivity(event, this.props.activity)}>No Way!</button>
+          <button className='deleteActivity' onClick={(event) => this.props.deleteActivity(event, this.props.activity)}>Delete</button>
         </td>
       </>
     )
