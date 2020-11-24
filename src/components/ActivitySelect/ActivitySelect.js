@@ -6,29 +6,25 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 
 class ActivitySelect extends Component {
   state = {
-    activeArray: []
+    clicked: false
   }
+
   componentDidMount = () => {
     this.fetchActivities();
     this.fetchUserActivities(); 
     // this.activeArrayBuilder(this.props.reduxState.activityReducer, this.props.reduxState.userActivityReducer)
   }
-  
-  // activeArrayBuilder = (mainArray, userArray) => {
-  //   let megaArray = mainArray.concat(userArray)
-  //   let tempArray = [];
-  //   megaArray.sort((a,b) => a.description.localeCompare(b.description))
-  //   console.log('DIGGING', megaArray[0].id);
-    
-  //   for(let i = 0; i < megaArray.length; i++){
-  //     if(megaArray[i] === megaArray[i+1]) {
-  //       console.log('at I', megaArray[i]);
-  //       tempArray.push(megaArray[i])
-  //     }
-  //   }
-  //   console.log('ARRAY IS', tempArray); 
-  // }
 
+
+//THIS IS THE THING I'M WORKING ON HERE!!
+//   addActiveClass(element) => {
+//   const clicked = element.target.id
+//   if(this.state.active === clicked) {
+//     this.setState({active: false})
+//   }else {
+//     this.setState({active:true})
+//   }
+// }
 
 //load all the activities from the DB
   fetchActivities = () => {
@@ -41,6 +37,7 @@ class ActivitySelect extends Component {
 //on click, this adds the targeted activity to this user's activities
   handleClick = (event, param) => {
     event.preventDefault();
+    console.log('PARAM', param);
     this.props.dispatch({
       type:'ADD_USER_ACTIVITY',
       payload: param
@@ -63,7 +60,6 @@ class ActivitySelect extends Component {
     this.props.history.push('/bubblemates')
   }
   render() {
-
     return(
       <>
         <div className="container">
@@ -78,7 +74,7 @@ class ActivitySelect extends Component {
             <tbody>
               {this.props.reduxState.activityReducer.map((activity) => {
                 return (
-                  <tr key={activity.id}>
+                  <tr key={activity.id} id={activity.id}>
                     <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
                   </tr>
                 )
@@ -90,7 +86,6 @@ class ActivitySelect extends Component {
     )
   }
 }
-
 //TRIAL
 // {this.props.reduxState.activityReducer.map((activity) => {
 //   {this.props.reduxState.userActivityReducer.map((userActivity) => {
@@ -112,7 +107,21 @@ class ActivitySelect extends Component {
 // })}
 
 // ----------
- 
+  
+  // activeArrayBuilder = (mainArray, userArray) => {
+  //   let megaArray = mainArray.concat(userArray)
+  //   let tempArray = [];
+  //   megaArray.sort((a,b) => a.description.localeCompare(b.description))
+  //   console.log('DIGGING', megaArray[0].id);
+    
+  //   for(let i = 0; i < megaArray.length; i++){
+  //     if(megaArray[i] === megaArray[i+1]) {
+  //       console.log('at I', megaArray[i]);
+  //       tempArray.push(megaArray[i])
+  //     }
+  //   }
+  //   console.log('ARRAY IS', tempArray); 
+  // } 
 
 
 const mapStoreToProps = reduxState => ({

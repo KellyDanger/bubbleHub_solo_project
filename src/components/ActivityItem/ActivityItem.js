@@ -13,12 +13,22 @@ class ActivityItem extends Component {
         <td>{this.props.activity.description}</td>
         <td>
           {/* Button for each activity (props.activity passed by ActivitySelect.js) on click, fires off handleClick from ActivitySelect with the click event, and the specific activity associated with that button as parameters */}
-          <button id={this.props.activity.id} onClick={(event) => this.props.handleClick(event, this.props.activity)}>You Bet!</button>
+          {this.props.activity.active === false && 
+            <button id={this.props.activity.id} onClick={(event) => this.props.handleClick(event, this.props.activity)}>You Bet!</button>
+          }
         </td>
-        <td>
-          {/* Fires off deleteActivity function with this activity sent as a prop */}
-          <button className='deleteActivity' onClick={(event) => this.props.deleteActivity(event, this.props.activity)}>Delete</button>
-        </td>
+          {this.props.reduxState.userActivityReducer.map((userActivity) => { return(
+            <>
+              {this.props.activity.id === userActivity.id && 
+              <td>
+              {/* Fires off deleteActivity function with this activity sent as a prop */}
+                <button className='deleteActivity' onClick={(event) => this.props.deleteActivity(event, this.props.activity)}>Delete</button>
+              </td>}
+            </>
+              )
+          })}
+        
+
       </>
     )
   }
@@ -28,3 +38,4 @@ const mapStoreToProps = reduxState => ({
 })
 
 export default connect(mapStoreToProps)(ActivityItem);
+
