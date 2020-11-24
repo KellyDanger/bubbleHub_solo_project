@@ -43,7 +43,7 @@ class Dashboard extends Component {
             </thead>
             <tbody>
               {this.props.reduxState.userActivityReducer[0] && this.props.reduxState.userActivityReducer.map((activity) => {
-                return <tr><ActivityItem activity={activity} deleteActivity={this.deleteActivity}/></tr>
+                return <tr key={activity.id}><td>{activity.description}</td><td><button className='deleteActivity' onClick={(event)=> this.deleteActivity(event, activity)}>Delete</button></td></tr>
               })}
             </tbody>
             
