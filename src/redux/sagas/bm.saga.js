@@ -13,8 +13,8 @@ function* fetchBm(action) {
 //receives id of BM being added and sends axios post request
 function* addBm(action) {
   try{
-    yield axios.post('/api/bm', action.payload)
-    yield put({type:'FETCH_MY_BMS'})
+    yield axios.post('/api/bm', action.payload);
+    yield put({type:'FETCH_MY_BMS'});
   }catch(error){
     console.log('error in add bm', error);
   }

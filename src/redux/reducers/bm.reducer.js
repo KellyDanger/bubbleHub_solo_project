@@ -6,4 +6,5 @@ const bmReducer = (state={}, action) => {
       return state;  
   }
 }
+
 export default bmReducer;
