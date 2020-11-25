@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import ActivityItem from '../ActivityItem/ActivityItem';
-// import mapStoreToProps from '../../redux/mapStoreToProps';
+
 
 class Dashboard extends Component {
 
@@ -37,7 +36,7 @@ class Dashboard extends Component {
           <h2>Your Current Activities Are:</h2>
             {this.props.reduxState.userActivityReducer.map((activity) => { return(
               activity.active === true &&
-              <div>
+              <div key={activity.id}>
                 <p>{activity.description}</p>
               </div> 
             )})}
