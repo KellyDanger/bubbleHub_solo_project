@@ -23,21 +23,19 @@ function* fetchUserActivities(action){
 function* addUserActivity (action) {
   // url is /api/activities :id from payload
   try{
-    yield axios.put('/api/activities', action.payload)
+    yield axios.put('/api/activities/add', action.payload);
   } catch (error) {
     console.log('error in addUserActivity SAGA', error);  
   }
 }
 
 // receives param.id and userid as array [action id and user id]
-function* deleteActivity (action) {
+function* deleteUserActivity (action) {
+  // url is /api/activities :id from payload
   try{
-    // yield console.log('ACTION IS', action.payload.id);
-    // sends delete request via axios with action payload to router
-    yield console.log('DELETING', action.payload.id); 
-    yield axios.delete(`/api/activities/${action.payload.id}`)
-  } catch(error) {
-    console.log('error in deleteActivity', error);
+    yield axios.put('/api/activities/remove', action.payload)
+  } catch (error) {
+    console.log('error in addUserActivity SAGA', error);  
   }
 }
 
@@ -45,7 +43,7 @@ function* deleteActivity (action) {
 function* activitySaga() {
     yield takeEvery('FETCH_ACTIVITIES', fetchActivities);
     yield takeEvery('ADD_USER_ACTIVITY', addUserActivity);
-    yield takeEvery('DELETE_ACTIVITY', deleteActivity);
+    yield takeEvery('DELETE_USER_ACTIVITY', deleteUserActivity);
     yield takeEvery('FETCH_USER_ACTIVITIES', fetchUserActivities)
   }
 

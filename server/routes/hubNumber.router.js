@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   let queryText = `SELECT sum("riskLevel"), count("riskLevel") FROM "activities"
   JOIN "user_activities" ON "activities"."id" = "user_activities"."activity_id"
   JOIN "user" ON "user"."id" = "user_activities"."user_id"
-  WHERE "user"."id" = $1;`;
+  WHERE "user"."id" = $1 AND "user_activities"."active"=true;`;
   pool.query(queryText, [req.user.id]).then((result) => {
     let hubNum = Math.round(Math.sqrt(result.rows[0].sum / result.rows[0].count))
     res.send({hubNumber: hubNum})

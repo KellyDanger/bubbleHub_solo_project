@@ -30,12 +30,13 @@ class ActivitySelect extends Component {
     this.fetchUserActivities();
   }
   // Recieves click event and activity as param from ActivityItem.js
-  deleteActivity = (event, param) => {
+  deleteUserActivity = (event, param) => {
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
     this.props.dispatch({
-      type: 'DELETE_ACTIVITY',
-      payload: {id:param}|
+      type: 'DELETE_USER_ACTIVITY',
+      payload: {id:param}
     })
+    this.fetchUserActivities();
   }
 //Adds the caluclated hub number to the user's HubNumber in the DB
   submitData = (event, param) => {

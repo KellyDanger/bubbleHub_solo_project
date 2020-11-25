@@ -22,6 +22,7 @@ function* loginUser(action) {
     yield put({ type: 'FETCH_USER' });
     yield put({type: 'FETCH_USER_TOLERANCE'});
     yield put({type: 'FETCH_HUBNUMBER'});
+    yield put({type: 'FETCH_USER_ACTIVITIES'});
   } catch (error) {
     console.log('Error with user login:', error);
     if (error.response.status === 401) {
