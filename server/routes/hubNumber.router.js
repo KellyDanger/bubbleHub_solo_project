@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 //Adds hubnumber to DB
 router.put('/', (req, res) => {
   let queryText = `UPDATE "user" SET "hubNumber" = $1 WHERE "id" = $2;`;
-  pool.query(queryText, [req.body.id, req.user.id]).then(result => {
+  pool.query(queryText, [req.body.num, req.user.id]).then(result => {
     res.sendStatus(200)
   }).catch(error => {
     console.log('error in put HN', error);

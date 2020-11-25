@@ -2,14 +2,14 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 
-function* fetchActivities() {
-  try{
-    const activityResponse = yield axios.get(`/api/activities`)
-    yield put({type: `SET_ACTIVITIES`, payload: activityResponse.data})
-  } catch(error){
-    console.log('Error in fetch activities',error);
-  }
-}
+// function* fetchActivities() {
+//   try{
+//     const activityResponse = yield axios.get(`/api/activities`)
+//     yield put({type: `SET_ACTIVITIES`, payload: activityResponse.data})
+//   } catch(error){
+//     console.log('Error in fetch activities',error);
+//   }
+// }
 //fetch activities for logged in user
 function* fetchUserActivities(action){
   try{
@@ -41,7 +41,7 @@ function* deleteUserActivity (action) {
 
 
 function* activitySaga() {
-    yield takeEvery('FETCH_ACTIVITIES', fetchActivities);
+    // yield takeEvery('FETCH_ACTIVITIES', fetchActivities);
     yield takeEvery('ADD_USER_ACTIVITY', addUserActivity);
     yield takeEvery('DELETE_USER_ACTIVITY', deleteUserActivity);
     yield takeEvery('FETCH_USER_ACTIVITIES', fetchUserActivities)

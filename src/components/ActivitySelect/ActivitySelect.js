@@ -7,28 +7,27 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 class ActivitySelect extends Component {
 
   componentDidMount = () => {
-    this.fetchActivities();
+    // this.fetchActivities();
     this.fetchUserActivities(); 
   }
-
-
-//load all the activities from the DB
-  fetchActivities = () => {
-    this.props.dispatch({type: 'FETCH_ACTIVITIES'})
+  componentDidUpdate = () => {
+    this.props.dispatch({type:'FETCH_HUBNUMBER'})
   }
-//fetch all the activities for the logged in user and store in useractivity reducer
+
   fetchUserActivities = () => {
     this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id})
   }
 //on click, this adds the targeted activity to this user's activities
   addUserActivity = (event, param) => {
-    console.log('PARAM', param);
+    //this is one click behind on updating hubnumber
     this.props.dispatch({
       type:'ADD_USER_ACTIVITY',
       payload: {id: param}
     })
+    this.props.dispatch({type:'ADD_HUBNUMBER', payload: this.props.reduxState.hubNumberReducer})
     this.fetchUserActivities();
   }
+
   // Recieves click event and activity as param from ActivityItem.js
   deleteUserActivity = (event, param) => {
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
@@ -40,9 +39,10 @@ class ActivitySelect extends Component {
   }
 //Adds the caluclated hub number to the user's HubNumber in the DB
   submitData = (event, param) => {
+    console.log('AddingHubNumber', param);
     this.props.dispatch({
       type: 'ADD_HUBNUMBER',
-      payload: {id: param}
+      payload: {num: param}
     })
     this.props.history.push('/bubblemates')
   }
