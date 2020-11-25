@@ -13,11 +13,10 @@ class BMDashboard extends Component {
   }
 //retrieves bubblemates for logged in user
   fetchMyBubbleMates = () => {
-    console.log('Fetching');
     this.props.dispatch({type: 'FETCH_MY_BMS'})
   }
 
-//sets state to user-input
+//sets state to user-input for searched email
   handleChange = (event) => {
     this.setState({
       searchEmail: event.target.value
@@ -25,6 +24,7 @@ class BMDashboard extends Component {
   }
 
   //sends dispatch to BM SAGA to find a user by email
+  //sets the local state to the searched-user's hubNumber from bmReducer then SHOULD reset the bm reducer to an empty object and resets the form
   searchUsers = () => {
     this.props.dispatch({
       type: 'FETCH_BM',
@@ -37,16 +37,19 @@ class BMDashboard extends Component {
     this.props.dispatch({type: 'SET_BM', payload: {}})
   }
 
-  // on click of "add" button, sends id number of searched BM to bm router
+  // on click of "add" button, sends id number of searched BM to bm saga
   addUser = (event, param) => {
     this.props.dispatch({
       type: 'ADD_BM',
       payload: {bmId: param}
     })
+    this.setState({
+      currentSearchHN: 0
+    })
     console.log(this.props.reduxState.bmReducer); 
   }
 
-  //delete route for bms
+  //delete route for bms sends id number of clicked bm to the bm saga
   deleteBm = (event, param) => {
     this.props.dispatch({
       type: 'DELETE_BM',
@@ -60,6 +63,9 @@ class BMDashboard extends Component {
     this.props.dispatch({
       type: 'SET_BM',
       payload: {}
+    })
+    this.setState({
+      currentSearchHN: 0
     })
   }
 
@@ -82,6 +88,7 @@ class BMDashboard extends Component {
                 <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
               </>
             } 
+            {/* if the searched user's hubnumber is too high for the logged in user's tolerance, an alert will display */}
             {this.props.reduxState.bmReducer.hubNumber > this.props.reduxState.user.tolerance &&
               <>
                 {this.mmAlert(`Uh oh! ${this.props.reduxState.bmReducer.username} is taking too many risks for you!`)}

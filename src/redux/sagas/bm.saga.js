@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {put, takeEvery } from 'redux-saga/effects';
 
-//sends axios request with email of searched user
+//sends axios request with email of searched user and sends results (1 user object) to bm.reducer
 function* fetchBm(action) {
   try{
     const bmResponse = yield axios.get(`/api/bm/${action.payload.searchEmail}`)
@@ -10,7 +10,7 @@ function* fetchBm(action) {
     console.log('error in fetch bm', error);
   }
 }
-//receives id of BM being added and sends axios post request
+//receives id of BM being added and sends axios post request with bmId and updates the myBm reducer
 function* addBm(action) {
   try{
     yield axios.post('/api/bm', action.payload);
@@ -19,7 +19,7 @@ function* addBm(action) {
     console.log('error in add bm', error);
   }
 }
-//sends axios request to retrieve all bms for the logged in user
+//sends axios request to retrieve all bms for the logged in user sends result rows to myBM reducer
 function* fetchMyBms(){
   try{
     const myBmsResponse = yield axios.get(`/api/bm`)
@@ -28,9 +28,9 @@ function* fetchMyBms(){
     console.log('error in fetch my bms', error);
   }
 }
+//sends delete request to router with clicked bm's id then updates the myBM reducer
 function* deleteBm(action){
   try{
-    yield console.log('DELETING', action.payload.id);
     yield axios.delete(`/api/bm/${action.payload.id}`);
     yield put({type: 'FETCH_MY_BMS'});
   }catch(error) {

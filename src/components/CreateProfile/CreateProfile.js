@@ -11,16 +11,15 @@ class CreateProfile extends Component {
     userId: this.props.reduxState.user.id,
     
   }
-
 //TODO cleanup data entry state dropdown etc
+//adds user data to local state
   handleChangeFor = (event, input) => {
     this.setState({
       ...this.state,
       [input]: event.target.value
     });
-    console.log('STATE', this.state);
   }
-
+//dispatches local state data to the profile saga
   handleSubmit = () => {
     this.props.dispatch({
       type: 'ADD_USER_DATA',

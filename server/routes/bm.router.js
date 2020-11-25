@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//sends sql query to retrieve a user by email
+//sends sql query to retrieve a user by email sends resulting user back to saga
 router.get('/:email', (req,res) => {
   let queryText = `SELECT "name", "id", "username", "hubNumber" FROM "user" WHERE "email" = $1;`;
   pool.query(queryText, [req.params.email]).then((result) => {
