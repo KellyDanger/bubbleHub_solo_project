@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//get the hubnumber for the current user
+//get the hubnumber data and calculate the hubNumber for the current user return the hub number to the saga
 router.get('/', (req, res) => {
   let queryText = `SELECT sum("riskLevel"), count("riskLevel") FROM "activities"
   JOIN "user_activities" ON "activities"."id" = "user_activities"."activity_id"
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 //Adds hubnumber to DB
 router.put('/', (req, res) => {
   let queryText = `UPDATE "user" SET "hubNumber" = $1 WHERE "id" = $2;`;
-  pool.query(queryText, [req.body.id, req.user.id]).then(result => {
+  pool.query(queryText, [req.body.num, req.user.id]).then(result => {
     res.sendStatus(200)
   }).catch(error => {
     console.log('error in put HN', error);

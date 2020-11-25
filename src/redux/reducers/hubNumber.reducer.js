@@ -1,3 +1,4 @@
+//holds the hubNumber for the logged in user
 const hubNumberReducer = (state=0, action) => {
   switch(action.type) {
     case 'SET_HUBNUMBER':
@@ -7,7 +8,6 @@ const hubNumberReducer = (state=0, action) => {
   }
 }
 
-//need to link up to get route
+
 export default hubNumberReducer;
 
-// TODO NEXT - Set up put route for hub number

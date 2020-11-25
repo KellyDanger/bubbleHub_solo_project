@@ -1,8 +1,8 @@
 import axios from 'axios';
 import {put, takeEvery} from 'redux-saga/effects';
 
-//TODO debug undefined error
 
+//sends user's tolerance number and id to the tolerance router then fires off FETCH request 
 function* addUserTolerance(action) {
   try {
     yield axios.put('/api/tolerance', action.payload); 
@@ -12,6 +12,7 @@ function* addUserTolerance(action) {
   }
 }
 
+//requests user's tolerance number from DB and sets it to the tolerance reducer
 function* fetchTolerance() {
   try{
     const toleranceResponse = yield axios.get(`/api/tolerance`)

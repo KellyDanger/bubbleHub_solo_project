@@ -1,3 +1,5 @@
+
+//holds the list of activities for the logged in user
 const userActivityReducer = (state=[], action) => {
   switch(action.type) {
     case 'SET_USER_ACTIVITIES':
@@ -8,4 +10,3 @@ const userActivityReducer = (state=[], action) => {
 }
 export default userActivityReducer;
 
-//this is not being used yet...will be used on GET ACTIVITIES
