@@ -18,9 +18,6 @@ const Nav = (props) => {
   return (
     <div className="nav">
       <div className="nav-right">
-        <Link className="nav-link" to="/about">
-          About
-        </Link>
         <Link className="nav-link" to={loginLinkData.path}>
           {/* Show this link if they are logged in or not,
           but call this link 'Home' if they are logged in,
@@ -37,7 +34,9 @@ const Nav = (props) => {
             <LogOutButton className="nav-link" />   
           </>
         )}
-
+        <Link className="nav-link" to="/about">
+          About
+        </Link>
       </div>
     </div>
   );

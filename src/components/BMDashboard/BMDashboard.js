@@ -34,6 +34,7 @@ class BMDashboard extends Component {
       currentSearchHN: this.props.reduxState.bmReducer.hubNumber
     })
     document.getElementById('bmSearch').reset();
+    this.props.dispatch({type: 'SET_BM', payload: {}})
   }
 
   // on click of "add" button, sends id number of searched BM to bm router
@@ -65,6 +66,7 @@ class BMDashboard extends Component {
   render() {
     return(
       <div>
+        
         <div>
           {this.props.reduxState.myBmReducer[0] && 
           this.props.reduxState.myBmReducer.map((bm) =>{
