@@ -7,7 +7,6 @@ import {withRouter} from 'react-router';
 class Header extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
-    // this.props.dispatch({type: 'FETCH_MY_BMS'});
   }
 
 

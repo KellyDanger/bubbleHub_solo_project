@@ -7,7 +7,6 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 class Dashboard extends Component {
 
 
-  // this component doesn't do much to start, just renders some user info to the DOM
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_MY_BMS'});
     this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id})
@@ -22,22 +21,26 @@ class Dashboard extends Component {
     })
     this.fetchUserActivities();
   }
-  
-
 
   render() {
     return (
       <>
         <div>
           <h1 id="welcome">Welcome, {this.props.reduxState.user.username}!</h1>
-          <p>Your Current HubMates Are</p>
+          <h2>Your Current HubMates Are</h2>
           <ul>
             {this.props.reduxState.myBmReducer[0] && 
             this.props.reduxState.myBmReducer.map((bm) =>{
             return <li key={bm.id}>{bm.name} whose HubNumber is: {bm.hubNumber}</li>
             })}
           </ul>
-        
+          <h2>Your Current Activities Are:</h2>
+            {this.props.reduxState.userActivityReducer.map((activity) => { return(
+              activity.active === true &&
+              <div>
+                <p>{activity.description}</p>
+              </div> 
+            )})}
           <LogOutButton className="log-in" />
         </div>
       </>
