@@ -21,9 +21,8 @@ class ActivitySelect extends Component {
     this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id})
   }
 //on click, this adds the targeted activity to this user's activities
-  handleClick = (event, param) => {
+  addUserActivity = (event, param) => {
     event.preventDefault();
-    console.log('PARAM', param);
     this.props.dispatch({
       type:'ADD_USER_ACTIVITY',
       payload: param
@@ -57,15 +56,16 @@ class ActivitySelect extends Component {
                 <th colSpan='2' className='text-center'>Do You Do This</th>
               </tr>
             </thead>
+            {this.props.reduxState.userActivityReducer[0] && 
+            <>
             <tbody>
-              {this.props.reduxState.activityReducer.map((activity) => {
+              {this.props.reduxState.userActivityReducer.map((activity) => {
                 return (
                   <tr key={activity.id} id={activity.id}>
-                    <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+                    <ActivityItem activity={activity} addUserActivity={this.addUserActivity} deleteActivity={this.deleteActivity}/>
                   </tr>
-                )
-              })}
-            </tbody>
+                )})}
+            </tbody></>}
         </table>
       </div>
       </>

@@ -33,7 +33,6 @@ class CreateProfile extends Component {
   render() {
     return(
       <div>
-        {JSON.stringify(this.props.reduxState.activityReducer)}
         <button onClick={this.map}>Map</button>
         <label htmlFor="nameInput">First Name</label>
         <input className="profileInput" type="text" id="nameInput" placeholder="First Name" onChange={(event)=> this.handleChangeFor(event, 'name')}/>
