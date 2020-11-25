@@ -5,26 +5,12 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-  state = {
-    clicked: false
-  }
 
   componentDidMount = () => {
     this.fetchActivities();
     this.fetchUserActivities(); 
-    // this.activeArrayBuilder(this.props.reduxState.activityReducer, this.props.reduxState.userActivityReducer)
   }
 
-
-//THIS IS THE THING I'M WORKING ON HERE!!
-//   addActiveClass(element) => {
-//   const clicked = element.target.id
-//   if(this.state.active === clicked) {
-//     this.setState({active: false})
-//   }else {
-//     this.setState({active:true})
-//   }
-// }
 
 //load all the activities from the DB
   fetchActivities = () => {
@@ -86,43 +72,6 @@ class ActivitySelect extends Component {
     )
   }
 }
-//TRIAL
-// {this.props.reduxState.activityReducer.map((activity) => {
-//   {this.props.reduxState.userActivityReducer.map((userActivity) => {
-//     if(activity.description === userActivity.description){
-
-//       return (               
-//         <tr>
-//           <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-//         </tr>
-//       )
-//     }else {
-//       return (
-//         <tr className='unchosenAct'>
-//           <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-//         </tr>
-//       )
-//     }
-//   })}
-// })}
-
-// ----------
-  
-  // activeArrayBuilder = (mainArray, userArray) => {
-  //   let megaArray = mainArray.concat(userArray)
-  //   let tempArray = [];
-  //   megaArray.sort((a,b) => a.description.localeCompare(b.description))
-  //   console.log('DIGGING', megaArray[0].id);
-    
-  //   for(let i = 0; i < megaArray.length; i++){
-  //     if(megaArray[i] === megaArray[i+1]) {
-  //       console.log('at I', megaArray[i]);
-  //       tempArray.push(megaArray[i])
-  //     }
-  //   }
-  //   console.log('ARRAY IS', tempArray); 
-  // } 
-
 
 const mapStoreToProps = reduxState => ({
   reduxState
