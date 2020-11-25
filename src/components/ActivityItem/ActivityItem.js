@@ -9,8 +9,17 @@ class ActivityItem extends Component {
   render(){
     return(
       <>
-        <td>{this.props.activity.description}</td> 
-        <button id={this.props.activity.id} onClick={(event) => this.props.addUserActivity(event, this.props.activity.id)}>I Do This</button>
+        {this.props.activity.active === false &&
+          <>
+          <td className="inactive">{this.props.activity.description}</td> 
+          <td><button id={this.props.activity.id} onClick={(event) => this.props.addUserActivity(event, this.props.activity.id)}>Add Activity</button></td></>
+        }
+        {this.props.activity.active === true &&
+          <>
+          <td className="active">{this.props.activity.description}</td> 
+          <td><button id={this.props.activity.id} onClick={(event)=> this.props.deleteUserActivity(event, this.props.activity.id)}>Remove Activity</button></td></>
+        }
+        
       </>
     )
   }

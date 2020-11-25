@@ -23,7 +23,7 @@ function* fetchUserActivities(action){
 function* addUserActivity (action) {
   // url is /api/activities :id from payload
   try{
-    yield axios.post('/api/activities', action.payload)
+    yield axios.put('/api/activities', action.payload)
   } catch (error) {
     console.log('error in addUserActivity SAGA', error);  
   }

@@ -22,18 +22,19 @@ class ActivitySelect extends Component {
   }
 //on click, this adds the targeted activity to this user's activities
   addUserActivity = (event, param) => {
-    event.preventDefault();
+    console.log('PARAM', param);
     this.props.dispatch({
       type:'ADD_USER_ACTIVITY',
-      payload: param
+      payload: {id: param}
     })
+    this.fetchUserActivities();
   }
   // Recieves click event and activity as param from ActivityItem.js
   deleteActivity = (event, param) => {
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
     this.props.dispatch({
       type: 'DELETE_ACTIVITY',
-      payload: param
+      payload: {id:param}|
     })
   }
 //Adds the caluclated hub number to the user's HubNumber in the DB
@@ -62,7 +63,7 @@ class ActivitySelect extends Component {
               {this.props.reduxState.userActivityReducer.map((activity) => {
                 return (
                   <tr key={activity.id} id={activity.id}>
-                    <ActivityItem activity={activity} addUserActivity={this.addUserActivity} deleteActivity={this.deleteActivity}/>
+                    <ActivityItem activity={activity} addUserActivity={this.addUserActivity} deleteUserActivity={this.deleteUserActivity}/>
                   </tr>
                 )})}
             </tbody></>}

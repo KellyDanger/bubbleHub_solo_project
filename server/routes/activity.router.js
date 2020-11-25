@@ -27,13 +27,12 @@ router.get(`/:id`, (req, res) => {
 })
 
 //sends selected activity to the activity router
-router.post('/', (req, res) => {
-  console.log('POST', req.body, 'user', req.user.id);
-  let queryText = `INSERT INTO "user_activities" ("activity_id", "user_id") VALUES ($1, $2);`;
-  pool.query(queryText, [req.body.id, req.user.id]).then((result) => {
+router.put('/', (req, res) => {
+  let queryText = `UPDATE "user_activities" SET "active"= true WHERE "user_id" = $1 AND "activity_id" = $2;`;
+  pool.query(queryText, [req.user.id, req.body.id]).then((result) => {
     res.sendStatus(200)
   }).catch((error) => {
-    console.log('error in post');
+    console.log('error in put');
     res.sendStatus(500)
   })
 })
