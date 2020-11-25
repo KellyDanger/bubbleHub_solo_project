@@ -5,19 +5,16 @@ import { connect } from 'react-redux';
 class RiskTolerance extends Component {
   state = {
     toleranceNum: 0,
-    userId: this.props.reduxState.user.id
   }
-// componentDidMount = () => {
-//   this.props.dispatch({type: 'FETCH_USER_TOLERANCE', payload: this.props.reduxState.user.id});
-// }
 
+//sets the local state to the tolerance number associated with the user's choice
   handleCheck = (event, param) => {
     console.log(param);
     this.setState({
       toleranceNum: param
     })
   }
-  //sends toleranceNum and userId to root saga/then tolerance saga
+  //sends toleranceNum and userId to tolerance saga
   handleSubmit = () => {
     this.props.dispatch({
       type: 'ADD_USER_TOLERANCE',

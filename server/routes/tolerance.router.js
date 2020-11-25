@@ -2,11 +2,10 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//sends request to db to update user's tolerance number 
 router.put('/', (req, res) => {
-  console.log('user is', req.body.userId);
-  
   let queryText = `UPDATE "user" SET "tolerance" = $1 WHERE "id" = $2;`;
-  pool.query(queryText, [req.body.toleranceNum, req.body.userId]).then(result => {
+  pool.query(queryText, [req.body.toleranceNum, req.user.id]).then(result => {
     res.sendStatus(202)
   }).catch(error => {
     console.log('error in put tol', error); 
