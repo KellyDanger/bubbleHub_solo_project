@@ -31,6 +31,7 @@ class App extends Component {
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_USER_TOLERANCE'});
     this.props.dispatch({type: 'FETCH_HUBNUMBER'});
+    this.props.dispatch({type: 'FETCH_ACTIVITIES'});
   }
 
 

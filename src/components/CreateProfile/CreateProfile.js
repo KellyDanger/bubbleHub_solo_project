@@ -8,8 +8,10 @@ class CreateProfile extends Component {
     email: '',
     city: '',
     state: '',
-    userId: this.props.reduxState.user.id
+    userId: this.props.reduxState.user.id,
+    
   }
+
 //TODO cleanup data entry state dropdown etc
   handleChangeFor = (event, input) => {
     this.setState({
@@ -31,6 +33,7 @@ class CreateProfile extends Component {
   render() {
     return(
       <div>
+        <button onClick={this.map}>Map</button>
         <label htmlFor="nameInput">First Name</label>
         <input className="profileInput" type="text" id="nameInput" placeholder="First Name" onChange={(event)=> this.handleChangeFor(event, 'name')}/>
         <label htmlFor="emailInput">Email Address</label>

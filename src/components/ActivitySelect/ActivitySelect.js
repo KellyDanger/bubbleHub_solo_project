@@ -5,26 +5,12 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
-  state = {
-    clicked: false
-  }
 
   componentDidMount = () => {
     this.fetchActivities();
     this.fetchUserActivities(); 
-    // this.activeArrayBuilder(this.props.reduxState.activityReducer, this.props.reduxState.userActivityReducer)
   }
 
-
-//THIS IS THE THING I'M WORKING ON HERE!!
-//   addActiveClass(element) => {
-//   const clicked = element.target.id
-//   if(this.state.active === clicked) {
-//     this.setState({active: false})
-//   }else {
-//     this.setState({active:true})
-//   }
-// }
 
 //load all the activities from the DB
   fetchActivities = () => {
@@ -35,21 +21,22 @@ class ActivitySelect extends Component {
     this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id})
   }
 //on click, this adds the targeted activity to this user's activities
-  handleClick = (event, param) => {
-    event.preventDefault();
+  addUserActivity = (event, param) => {
     console.log('PARAM', param);
     this.props.dispatch({
       type:'ADD_USER_ACTIVITY',
-      payload: param
+      payload: {id: param}
     })
+    this.fetchUserActivities();
   }
   // Recieves click event and activity as param from ActivityItem.js
-  deleteActivity = (event, param) => {
+  deleteUserActivity = (event, param) => {
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
     this.props.dispatch({
-      type: 'DELETE_ACTIVITY',
-      payload: param
+      type: 'DELETE_USER_ACTIVITY',
+      payload: {id:param}
     })
+    this.fetchUserActivities();
   }
 //Adds the caluclated hub number to the user's HubNumber in the DB
   submitData = (event, param) => {
@@ -71,58 +58,22 @@ class ActivitySelect extends Component {
                 <th colSpan='2' className='text-center'>Do You Do This</th>
               </tr>
             </thead>
+            {this.props.reduxState.userActivityReducer[0] && 
+            <>
             <tbody>
-              {this.props.reduxState.activityReducer.map((activity) => {
+              {this.props.reduxState.userActivityReducer.map((activity) => {
                 return (
                   <tr key={activity.id} id={activity.id}>
-                    <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
+                    <ActivityItem activity={activity} addUserActivity={this.addUserActivity} deleteUserActivity={this.deleteUserActivity}/>
                   </tr>
-                )
-              })}
-            </tbody>
+                )})}
+            </tbody></>}
         </table>
       </div>
       </>
     )
   }
 }
-//TRIAL
-// {this.props.reduxState.activityReducer.map((activity) => {
-//   {this.props.reduxState.userActivityReducer.map((userActivity) => {
-//     if(activity.description === userActivity.description){
-
-//       return (               
-//         <tr>
-//           <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-//         </tr>
-//       )
-//     }else {
-//       return (
-//         <tr className='unchosenAct'>
-//           <ActivityItem activity={activity} handleClick={this.handleClick} deleteActivity={this.deleteActivity}/>
-//         </tr>
-//       )
-//     }
-//   })}
-// })}
-
-// ----------
-  
-  // activeArrayBuilder = (mainArray, userArray) => {
-  //   let megaArray = mainArray.concat(userArray)
-  //   let tempArray = [];
-  //   megaArray.sort((a,b) => a.description.localeCompare(b.description))
-  //   console.log('DIGGING', megaArray[0].id);
-    
-  //   for(let i = 0; i < megaArray.length; i++){
-  //     if(megaArray[i] === megaArray[i+1]) {
-  //       console.log('at I', megaArray[i]);
-  //       tempArray.push(megaArray[i])
-  //     }
-  //   }
-  //   console.log('ARRAY IS', tempArray); 
-  // } 
-
 
 const mapStoreToProps = reduxState => ({
   reduxState

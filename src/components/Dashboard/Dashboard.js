@@ -5,6 +5,8 @@ import ActivityItem from '../ActivityItem/ActivityItem';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class Dashboard extends Component {
+
+
   // this component doesn't do much to start, just renders some user info to the DOM
   componentDidMount = () => {
     this.props.dispatch({type: 'FETCH_MY_BMS'});
@@ -12,14 +14,15 @@ class Dashboard extends Component {
   }
 
   // Recieves click event and activity as param from ActivityItem.js
-  deleteActivity = (event, param) => {
+  deleteUserActivity = (event, param) => {
     // sends param and user.id as payload to acivity.saga payload logs as correct numbers (activity id and userid)
     this.props.dispatch({
-      type: 'DELETE_ACTIVITY',
-      payload: param
+      type: 'DELETE_USER_ACTIVITY',
+      payload: {id:param}
     })
-    this.props.dispatch({type: 'FETCH_USER_ACTIVITIES', payload: this.props.reduxState.user.id});
+    this.fetchUserActivities();
   }
+  
 
 
   render() {
@@ -34,20 +37,7 @@ class Dashboard extends Component {
             return <li key={bm.id}>{bm.name} whose HubNumber is: {bm.hubNumber}</li>
             })}
           </ul>
-          <table className='table-striped'>
-          <thead>
-              <tr>
-                <th>Activity</th>
-                <th colSpan='2' className='text-center'>Remove From my Activities</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.reduxState.userActivityReducer[0] && this.props.reduxState.userActivityReducer.map((activity) => {
-                return <tr key={activity.id}><td>{activity.description}</td><td><button className='deleteActivity' onClick={(event)=> this.deleteActivity(event, activity)}>Delete</button></td></tr>
-              })}
-            </tbody>
-            
-          </table>
+        
           <LogOutButton className="log-in" />
         </div>
       </>
