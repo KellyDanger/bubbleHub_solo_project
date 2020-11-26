@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {HashRouter as Router, Link} from 'react-router-dom';
 import {withRouter} from 'react-router';
+import "./Header.css";
+
+import Nav from '../Nav/Nav';
 
 
 class Header extends Component {
@@ -12,21 +15,20 @@ class Header extends Component {
 
   render(){
     return(
-      <div className="container">
+      <div className="headContainer">
         <Router>
           <Link to="/home">
-            <div>
+            <div id="title">
               <h1>BubbleHub</h1>
             </div>
           </Link>
         </Router>
         {this.props.reduxState.user.id && 
         <div id="numRender">
-          <div className="row">
-            <h2 className="col-sm-3" >Hello {this.props.reduxState.user.name}</h2>
-            <h2 className="col-sm-3">Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h2>
-            <h2 className="col-sm-3">Your HubNumber is: {this.props.reduxState.hubNumberReducer}</h2>
-          </div>
+            <h2 className="nameGreet">Hello {this.props.reduxState.user.name}</h2>
+            <h2 className="numDisp">Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h2>
+            <h2 className="numDisp">Your HubNumber is: {this.props.reduxState.hubNumberReducer}</h2>
+            <Nav/>
         </div>
         }
       </div>

@@ -5,41 +5,22 @@ body,
 }
 
 body {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-  font-family: 'Nerko One', cursive, sans-serif;
-  margin: 0px;
-  background-color: #ae97e4;
-  color: #1b0352;
-}
-h1 {
-  color: #1b0352;
-  font-size: 80px;
-}
-#welcome {
-  color: #1b0352;
-  font-size: 60px;
+
+  font-family: sans-serif; 
 }
 
-img {
-  display: inline-block;
-  max-width: 100%;
+
+p {
+  font-family: sans-serif;
 }
-.nav-link {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 100%;
-  box-shadow: 5px 5px 5px #1b0352;
-  background-color: #1b03522E;
+
+h1 { 
+  font-family: 'Nerko One', cursive, sans-serif; 
   color: #1b0352;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
+  font-size: 70px;
 }
-.nav {
-  width: 65%;
-  margin: auto;
-  padding-left: 1.2%;
-}
+
+
 
 /* --------------------------------------------------------------------------------
 Container
@@ -53,38 +34,32 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 
-button, .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 100%;
-  box-shadow: 5px 5px 5px #1b0352;
-  background-color: #1b03522E;
-  color: #1b0352;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
+button {
+  background-color: #f6f8f2;
+  border: none;
+  border-radius: 10px;
 }
 
 .btn_sizeMin {
   min-height: 50px;
   min-width: 100px;
+  border-radius: 10px;
 }
 
 .btn_sizeSm {
   padding: 10px 15px;
   font-size: 0.8rem;
+  border-radius: 10px;
 }
 
 .btn_sizeFull {
   display: block;
   width: 100%;
+  border-radius: 10px;
+
 }
 
-button:hover, .nav-link:hover, .btn:hover{
-  background-color: #96e002;
-  text-decoration: none;
-  color: #1b0352;
-}
+
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
@@ -95,6 +70,8 @@ button:hover, .nav-link:hover, .btn:hover{
   background: none;
   font: inherit;
   color: #444;
+  border-radius: 10px;
+
 }
 
 .btn_asLink:hover {
@@ -129,19 +106,21 @@ Form Treatment
   padding: 25px;
   margin: 0 auto 20px;
   background-color: #a09bab;
-  border-radius: 100%;
+  border-radius: 10%;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
 input {
   margin: 5px;
   margin-bottom: 10px;
-  border-radius: 15%;
+
 }
 /* -------CUSTOM STYLING DEV  */
 .table-striped {
   width: 60%;
   margin: 0px auto;
+  border-radius: 10px;
+  background-color: #f6f8f2D5;
 }
 
 .chosenAct {

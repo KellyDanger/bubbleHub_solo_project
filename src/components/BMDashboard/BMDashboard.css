@@ -1,0 +1,35 @@
+.searchForm {
+  border: 1px solid black;
+  width: 60%;
+  margin: 0px auto;
+  margin-top: 40px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.searchForm, input label {
+  flex-direction: column;
+  background-color: #1b0352;
+}
+
+.searchForm input {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 0px;
+
+}
+.searchForm label {
+  align-self: center;
+  margin-bottom: 0px;
+  color: #f6f8f2;
+}
+.searchBtn{
+/* align-self: center; */
+background-color: #f6f8f2;
+border: none;
+border-radius: 10px;
+}
+
+.bubbleMate {
+  color: #f6f8f2;
+}

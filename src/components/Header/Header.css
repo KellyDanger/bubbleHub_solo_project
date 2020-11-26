@@ -1,0 +1,14 @@
+body {
+  font-family: 'Nerko One', cursive, sans-serif; 
+  color: #1b0352;
+}
+
+.numDisp {
+   width: 100%; 
+   text-align: right;
+}
+
+
+.headContainer {
+  background-color: #088198D5;
+}

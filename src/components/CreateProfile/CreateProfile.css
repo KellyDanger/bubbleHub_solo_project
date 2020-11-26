@@ -1,0 +1,36 @@
+body {
+  background-image: url('../../images/bubbleInBubble.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.dataForm {
+  border: 1px solid black;
+  width: 60%;
+  margin: 0px auto;
+  margin-top: 40px;
+  display: flex;
+  border-radius: 10px;
+}
+
+.dataForm, input label {
+  flex-direction: column;
+  background-color: #1b0352;
+}
+
+.dataForm input {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 0px;
+
+}
+.dataForm label {
+  align-self: center;
+  margin-bottom: 0px;
+  color: #f6f8f2;
+}
+.nextBtn {
+  width: 50px;
+  align-self: center;
+}
+ 

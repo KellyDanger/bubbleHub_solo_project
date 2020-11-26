@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BMItem from '../BMItem/BMItem';
 import swal from 'sweetalert';
+import './BMDashboard.css';
 
 class BMDashboard extends Component {
   state={
@@ -71,8 +72,7 @@ class BMDashboard extends Component {
 
   render() {
     return(
-      <div>
-        
+      <div className="searchForm"> 
         <div>
           {this.props.reduxState.myBmReducer[0] && 
           this.props.reduxState.myBmReducer.map((bm) =>{
@@ -84,7 +84,7 @@ class BMDashboard extends Component {
             {/* if the searched bubblemate's hubNumber is lower than the user's tolerance number, user can add them to their bubble */}
             {this.props.reduxState.bmReducer.hubNumber <= this.props.reduxState.user.tolerance &&
               <>
-                <p>{this.props.reduxState.bmReducer.username}: {this.props.reduxState.bmReducer.hubNumber}</p>
+                <p className="bubbleMate">{this.props.reduxState.bmReducer.username}: {this.props.reduxState.bmReducer.hubNumber}</p>
                 <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
               </>
             } 
@@ -99,7 +99,7 @@ class BMDashboard extends Component {
         <form id="bmSearch">
           <label htmlFor='searchBm'>Enter a Friend's Email Address to Find Them on BubbleHub</label>
           <input id="searchBm" type="text" placehoder="email" onChange={(event) => this.handleChange(event)}/>
-          <button onClick={this.searchUsers} className="btn">Search</button>
+          <button id="searchBtn" onClick={this.searchUsers} >Search</button>
         </form>
         
       </div>
