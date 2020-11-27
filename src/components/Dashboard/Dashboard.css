@@ -21,6 +21,9 @@
   font-weight: bold;
   font-size: larger;
 }
+.bmCont p {
+  margin-bottom: 0px;
+}
 i {
   margin-left: 10px;
 }
