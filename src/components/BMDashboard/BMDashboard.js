@@ -36,6 +36,7 @@ class BMDashboard extends Component {
     })
     document.getElementById('bmSearch').reset();
     this.props.dispatch({type: 'SET_BM', payload: {}})
+    
   }
 
   // on click of "add" button, sends id number of searched BM to bm saga
@@ -82,14 +83,14 @@ class BMDashboard extends Component {
         <div>{this.props.reduxState.bmReducer.id && 
           <div>
             {/* if the searched bubblemate's hubNumber is lower than the user's tolerance number, user can add them to their bubble */}
-            {this.props.reduxState.bmReducer.hubNumber <= this.props.reduxState.user.tolerance &&
+            {this.props.state.currentSearchHN <= this.props.reduxState.user.tolerance &&
               <>
                 <p className="bubbleMate">{this.props.reduxState.bmReducer.username}: {this.props.reduxState.bmReducer.hubNumber}</p>
                 <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
               </>
             } 
             {/* if the searched user's hubnumber is too high for the logged in user's tolerance, an alert will display */}
-            {this.props.reduxState.bmReducer.hubNumber > this.props.reduxState.user.tolerance &&
+            {this.props.state.currentSearchHN > this.props.reduxState.user.tolerance &&
               <>
                 {this.mmAlert(`Uh oh! ${this.props.reduxState.bmReducer.username} is taking too many risks for you!`)}
               </>
