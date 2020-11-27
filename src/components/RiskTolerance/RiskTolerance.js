@@ -20,6 +20,10 @@ class RiskTolerance extends Component {
       type: 'ADD_USER_TOLERANCE',
       payload: this.state
     })
+    console.log('USER TOLERANCEREDUCER', this.props.reduxState.userToleranceReducer);
+    console.log('');
+    
+    
     this.props.history.push('/activityselect')
   }
 
