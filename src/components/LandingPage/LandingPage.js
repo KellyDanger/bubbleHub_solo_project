@@ -18,9 +18,8 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container" id="about">
         <h2>{this.state.heading}</h2>
-
         <div className="grid">
           <div className="grid-col grid-col_8">
             <p>The BubbleHub is a place to simplify your quarantine conversations. Register to start a profile,and fill out our simple surveys. Tell us how concerned you are about Covid-19 in the risk tolerance survey, and see what your Tolerance Number is. Then give us a picture of how you move through your life in the Activities Survey to see your own HubNumber, a numerical representation of how risky your day to day activities are. </p>

@@ -5,11 +5,11 @@ body,
   display: flex;
   flex-direction: column;
   max-height: 100vh;
-  background-image: url('../../images/bubbleInBubble.jpg');
+  background-image: url('../../images/bubbleInBubble.jpg') ;
+  background-size: 100%;
   min-height: 100%;
   background-repeat: no-repeat;
-  background-position: fixed;
-  
+  background-position: fixed; 
 }
 
 body {
@@ -71,7 +71,7 @@ button {
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
-  padding: 0;
+  padding: 5px;
   border-width: 0;
   border-bottom: 1px solid #444;
   border-radius: 100%;
@@ -79,13 +79,13 @@ button {
   font: inherit;
   color: #444;
   border-radius: 10px;
-
+  background-color: #f6f8f2;
 }
 
 .btn_asLink:hover {
-  background-color: transparent;
+  background-color: #008183;
   border-color: #008183;
-  color: #008183;
+  color: #1b0352;
 }
 
 /* --------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ Form Treatment
   width: 400px;
   max-width: 100%;
   padding: 25px;
-  margin: 0 auto 20px;
+  margin: 20px auto 20px;
   background-color: #a09bab;
   border-radius: 10%;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
