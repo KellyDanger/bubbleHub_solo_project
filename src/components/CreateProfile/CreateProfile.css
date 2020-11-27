@@ -11,7 +11,7 @@
 
 .dataForm, input label {
   flex-direction: column;
-  background-color: #1b0352;
+  background-color: #1b0352D5;
 }
 
 .dataForm input {
