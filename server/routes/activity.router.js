@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+
 // //gets all activiites from DB to populate activities survey
 // router.get('/', (req, res) => {
 //   let queryText = `SELECT * FROM "activities";`;
@@ -14,37 +15,50 @@ const router = express.Router();
 // });
 //gets all activies for the logged in user
 router.get(`/:id`, (req, res) => {
-  let queryText = `SELECT "activities"."id","activities"."description", "activities"."riskLevel", "user_activities"."active" FROM "activities"
-  JOIN "user_activities" ON "activities"."id" = "user_activities"."activity_id"
-  JOIN "user" on "user"."id" = "user_activities"."user_id"
-  WHERE "user"."id" = $1 ORDER BY "activities"."id";`;
-  pool.query(queryText, [req.params.id]).then((result) => {
-    res.send(result.rows)
-  }).catch((error) => {
-    console.log('error in getting user activities');
-    res.sendStatus(500)
-  })
+  if(req.isAuthenticated()) {
+    let queryText = `SELECT "activities"."id","activities"."description", "activities"."riskLevel", "user_activities"."active" FROM "activities"
+    JOIN "user_activities" ON "activities"."id" = "user_activities"."activity_id"
+    JOIN "user" on "user"."id" = "user_activities"."user_id"
+    WHERE "user"."id" = $1 ORDER BY "activities"."id";`;
+    pool.query(queryText, [req.params.id]).then((result) => {
+      res.send(result.rows)
+    }).catch((error) => {
+      console.log('error in getting user activities');
+      res.sendStatus(500)
+    })
+  } else {
+    res.sendStatus(403)
+  }
 })
 
 //sends put request to DB with logged in user and selected activity to update said actiivty to active=true
 router.put('/add', (req, res) => {
-  let queryText = `UPDATE "user_activities" SET "active"= true WHERE "user_id" = $1 AND "activity_id" = $2;`;
-  pool.query(queryText, [req.user.id, req.body.id]).then((result) => {
-    res.sendStatus(200)
-  }).catch((error) => {
-    console.log('error in put');
-    res.sendStatus(500)
-  })
+  if(req.isAuthenticated()) {
+    let queryText = `UPDATE "user_activities" SET "active"= true WHERE "user_id" = $1 AND "activity_id" = $2;`;
+    pool.query(queryText, [req.user.id, req.body.id]).then((result) => {
+      res.sendStatus(200)
+    }).catch((error) => {
+      console.log('error in put');
+      res.sendStatus(500)
+    })
+  } else {
+    res.sendStatus(403)
+  }
 })
 
+//sends put request to DB with logged in user and selected activity to update said activity to active=false
 router.put('/remove', (req, res) => {
-  let queryText = `UPDATE "user_activities" SET "active"= false WHERE "user_id" = $1 AND "activity_id" = $2;`;
-  pool.query(queryText, [req.user.id, req.body.id]).then((result) => {
-    res.sendStatus(200)
-  }).catch((error) => {
-    console.log('error in put');
-    res.sendStatus(500)
-  })
+  if(req.isAuthenticated()){
+    let queryText = `UPDATE "user_activities" SET "active"= false WHERE "user_id" = $1 AND "activity_id" = $2;`;
+    pool.query(queryText, [req.user.id, req.body.id]).then((result) => {
+      res.sendStatus(200)
+    }).catch((error) => {
+      console.log('error in put');
+      res.sendStatus(500)
+    })
+  }else{
+    res.sendStatus(403)
+  }
 })
 
 //sends delete request for activity from logged in user's db
