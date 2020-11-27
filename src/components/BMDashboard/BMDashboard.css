@@ -29,7 +29,12 @@ background-color: #f6f8f2;
 border: none;
 border-radius: 10px;
 }
+.bubbleMateMatch {
+  color: #f6f8f2;
+}
+.bubbleMateMisMatch {
+  color: red
+}
 .bubbleMate {
   color: #f6f8f2;
-  padding: 
 }
