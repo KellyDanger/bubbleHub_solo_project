@@ -124,12 +124,7 @@ input {
 
 }
 /* -------CUSTOM STYLING DEV  */
-.table-striped {
-  width: 60%;
-  margin: 0px auto;
-  border-radius: 10px;
-  background-color: #f6f8f2D5;
-}
+
 
 .chosenAct {
   background-color: tomato;

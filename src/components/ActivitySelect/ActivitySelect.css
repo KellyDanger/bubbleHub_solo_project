@@ -5,3 +5,21 @@
 .activityBtn {
   position: fixed;
 }
+.table-striped {
+  width: 50%;
+  margin: 0px auto;
+  border-radius: 10px;
+  background-color: #f6f8f2D5;
+}
+td{
+  padding-left: 10%;
+  padding-right: 10%;
+  border-top: 1px solid black;
+}
+
+th {
+  text-align: center;
+}
+.active {
+  background-color: #088198D5 ;
+}

@@ -62,8 +62,7 @@ class ActivitySelect extends Component {
         <table className="table-striped">
             <thead>
               <tr>
-                <th>Activity</th>
-                <th colSpan='2' className='text-center'>Do You Do This</th>
+                <th colSpan="2">Add the Activities You Do</th>
               </tr>
             </thead>
             {this.props.reduxState.userActivityReducer[0] && 

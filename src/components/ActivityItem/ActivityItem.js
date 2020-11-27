@@ -18,8 +18,8 @@ class ActivityItem extends Component {
         {/* If the activity IS active in the DB */}
         {this.props.activity.active === true &&
           <>
-          <td className="active">{this.props.activity.description}</td> 
-          <td><button id={this.props.activity.id} onClick={(event)=> this.props.deleteUserActivity(event, this.props.activity.id)}>Remove Activity</button></td></>
+          <td className="active" >{this.props.activity.description}</td> 
+          <td className="active"><button id={this.props.activity.id} onClick={(event)=> this.props.deleteUserActivity(event, this.props.activity.id)}>Remove Activity</button></td></>
         }
         
       </>
