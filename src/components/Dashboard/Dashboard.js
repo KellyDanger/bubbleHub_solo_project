@@ -41,9 +41,9 @@ class Dashboard extends Component {
               <p>{bm.name}</p> 
               <p>HubNumber is: {bm.hubNumber} </p> 
               <p>Match:
-            {bm.hubNumber > this.props.reduxState.user.hubNumber &&
+            {bm.hubNumber > this.props.reduxState.user.tolerance &&
               <i id="flag" class="far fa-flag"></i>}
-            {bm.hubNumber <= this.props.reduxState.user.hubNumber &&
+            {bm.hubNumber <= this.props.reduxState.user.tolerance &&
               <i class="far fa-check-circle"></i>
             }</p>
             </div>

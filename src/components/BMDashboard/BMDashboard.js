@@ -61,7 +61,14 @@ class BMDashboard extends Component {
         <div>
           {this.props.reduxState.myBmReducer[0] && 
           this.props.reduxState.myBmReducer.map((bm) =>{
-            return <BMItem key={bm.id} bm={bm} deleteBm={this.deleteBm}/>
+            return <> 
+            {bm.hubNumber > this.props.reduxState.user.tolerance &&
+              <BMItem key={bm.id} bm={bm} deleteBm={this.deleteBm} className="bubbleMateMisMatch"/>
+            }
+            {bm.hubNumber <= this.props.reduxState.user.tolerance &&
+              <BMItem key={bm.id} bm={bm} deleteBm={this.deleteBm} className="bubbleMateMatch"/>
+            }
+            </> 
           })}
         </div>
         <div>{this.props.reduxState.bmReducer.id && 
