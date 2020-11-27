@@ -1,0 +1,37 @@
+.dashContain{
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #1b0352;
+  color: #f6f8f2;
+}
+.dashContain h1{
+  color: #f6f8f2;
+}
+.hubMatesCont {
+  margin: 0px 100px 0px 100px;
+}
+
+.bmCont{
+  background-color: #088198D5;
+  border: 1px solid #f6f8f2;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+i {
+  margin-left: 10px;
+}
+
+#flag {
+  color: red;
+}
+.activityCont {
+  background-color: #088198D5 ;
+  margin: 0px 100px 0px 100px;
+  font-weight: bold;
+  font-size: larger;
+}
+

@@ -1,0 +1,7 @@
+.scrollContainer {
+  flex: 1;
+  overflow: scroll;
+}
+.activityBtn {
+  position: fixed;
+}
