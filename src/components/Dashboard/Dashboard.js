@@ -33,7 +33,7 @@ class Dashboard extends Component {
       <>
         <div className="dashContain">
           <h1 id="welcome">{this.props.reduxState.user.username}'s Dashboard</h1>
-          <h2>Your Current HubMates Are</h2>
+          <h2>Your Current BubbleMates Are</h2>
           <div className="hubMatesCont" onClick={this.bubbleMates}>
             {this.props.reduxState.myBmReducer[0] && 
             this.props.reduxState.myBmReducer.map((bm) =>{
