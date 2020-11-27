@@ -121,11 +121,15 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
-
+  background-color: #f6f8f2;
 }
 /* -------CUSTOM STYLING DEV  */
-
-
 .chosenAct {
   background-color: tomato;
+}
+
+.aboutBlurb {
+  background-color: #f6f8f263;
+  padding: 20px;
+  border-radius: 10px;
 }

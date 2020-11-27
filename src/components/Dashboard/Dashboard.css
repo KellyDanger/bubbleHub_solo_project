@@ -3,14 +3,16 @@
   width: 60%;
   margin: auto;
   margin-top: 30px;
-  background-color: #1b0352;
+  background-color: #1b0352D5;
   color: #f6f8f2;
+  border-radius: 10px;
 }
 .dashContain h1{
   color: #f6f8f2;
 }
 .hubMatesCont {
   margin: 0px 100px 0px 100px;
+
 }
 
 .bmCont{
@@ -20,6 +22,7 @@
   margin-bottom: 5px;
   font-weight: bold;
   font-size: larger;
+  border-radius: 10px;
 }
 .bmCont p {
   margin-bottom: 0px;
@@ -33,8 +36,10 @@ i {
 }
 .activityCont {
   background-color: #088198D5 ;
-  margin: 0px 100px 0px 100px;
+  width: 50%;
+  margin: auto;
   font-weight: bold;
   font-size: larger;
+  border-radius: 10px
 }
 

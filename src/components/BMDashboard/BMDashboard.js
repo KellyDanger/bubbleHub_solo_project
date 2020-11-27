@@ -58,43 +58,54 @@ class BMDashboard extends Component {
   render() {
     return(
       <div className="searchForm"> 
-        <div>
+        <form id="bmSearch">
+            <label htmlFor='searchBm'>Enter a Friend's Email Address to Find Them on BubbleHub</label>
+            <input id="searchBm" type="text" placehoder="email" onChange={(event) => this.handleChange(event)}/>
+            <button id="searchBtn" onClick={this.searchUsers} >Search</button>
+          </form>
+        <div>{this.props.reduxState.bmReducer.id && 
+          <div className="bmCont">
+            {/* if the searched bubblemate's hubNumber is lower than the user's tolerance number, user can add them to their bubble */}
+            {this.props.reduxState.bmReducer.hubNumber <= this.props.reduxState.user.tolerance &&
+              <>
+                <div className="bubbleMate">
+                  <p>{this.props.reduxState.bmReducer.username}</p>
+                  <p>Hubnumber: {this.props.reduxState.bmReducer.hubNumber}</p>
+                  <p>Match: <i class="far fa-check-circle"></i></p>
+                  <button className="addBtn" onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
+                  <button className="cancelBtn" onClick={this.cancel}>Cancel</button>
+                </div>
+                
+              </>
+            } 
+            {/* if the searched user's hubnumber is too high for the logged in user's tolerance, an alert will display */}
+            {this.props.reduxState.bmReducer.hubNumber > this.props.reduxState.user.tolerance &&
+              <>
+                <div className="bubbleMate">
+                  <p>{this.props.reduxState.bmReducer.username}</p>
+                  <p>Hubnumber:  {this.props.reduxState.bmReducer.hubNumber}</p>
+                  <p> Not A Match: <i id="flag" class="far fa-flag"></i></p>
+                  <button className="addBtn" onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
+                  <button className="cancelBtn" onClick={this.cancel}>Cancel</button>
+                </div>
+                
+              </>
+            } 
+          </div>}
+          <div>
           {this.props.reduxState.myBmReducer[0] && 
           this.props.reduxState.myBmReducer.map((bm) =>{
-            return <> 
+            return <div className="hubMatesCont"> 
             {bm.hubNumber > this.props.reduxState.user.tolerance &&
               <BMItem key={bm.id} bm={bm} deleteBm={this.deleteBm} className="bubbleMateMisMatch"/>
             }
             {bm.hubNumber <= this.props.reduxState.user.tolerance &&
               <BMItem key={bm.id} bm={bm} deleteBm={this.deleteBm} className="bubbleMateMatch"/>
             }
-            </> 
+            </div> 
           })}
         </div>
-        <div>{this.props.reduxState.bmReducer.id && 
-          <div>
-            {/* if the searched bubblemate's hubNumber is lower than the user's tolerance number, user can add them to their bubble */}
-            {this.props.reduxState.bmReducer.hubNumber <= this.props.reduxState.user.tolerance &&
-              <>
-                <p className="bubbleMateMatch">{this.props.reduxState.bmReducer.username}: {this.props.reduxState.bmReducer.hubNumber}</p>
-                <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button><button onClick={this.cancel}>Cancel</button>
-              </>
-            } 
-            {/* if the searched user's hubnumber is too high for the logged in user's tolerance, an alert will display */}
-            {this.props.reduxState.bmReducer.hubNumber > this.props.reduxState.user.tolerance &&
-              <>
-                <p className="bubbleMateMisMatch">{this.props.reduxState.bmReducer.username}: {this.props.reduxState.bmReducer.hubNumber}</p>
-                <button onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button><button onClick={this.cancel}>Cancel</button>
-              </>
-            } 
-          </div>}
         </div>
-        <form id="bmSearch">
-          <label htmlFor='searchBm'>Enter a Friend's Email Address to Find Them on BubbleHub</label>
-          <input id="searchBm" type="text" placehoder="email" onChange={(event) => this.handleChange(event)}/>
-          <button id="searchBtn" onClick={this.searchUsers} >Search</button>
-        </form>
-        
       </div>
     )
   }

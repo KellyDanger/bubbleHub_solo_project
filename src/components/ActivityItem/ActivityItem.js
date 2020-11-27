@@ -13,13 +13,13 @@ class ActivityItem extends Component {
         {this.props.activity.active === false &&
           <>
           <td className="inactive">{this.props.activity.description}</td> 
-          <td><button id={this.props.activity.id} onClick={(event) => this.props.addUserActivity(event, this.props.activity.id)}>Add Activity</button></td></>
+          <td><button id={this.props.activity.id} className="addActivityBtn" onClick={(event) => this.props.addUserActivity(event, this.props.activity.id)}>Add</button></td></>
         }
         {/* If the activity IS active in the DB */}
         {this.props.activity.active === true &&
           <>
           <td className="active" >{this.props.activity.description}</td> 
-          <td className="active"><button id={this.props.activity.id} onClick={(event)=> this.props.deleteUserActivity(event, this.props.activity.id)}>Remove Activity</button></td></>
+          <td className="active"><button className="addActivityBtn" id={this.props.activity.id} onClick={(event)=> this.props.deleteUserActivity(event, this.props.activity.id)}>Remove</button></td></>
         }
         
       </>

@@ -7,8 +7,11 @@ class BMItem extends Component {
 
   render(){
     return(
-      <div>
-        <div className={this.props.className}>BM: {this.props.bm.name} ---HubNumber: {this.props.bm.hubNumber}<button onClick={(event)=>this.props.deleteBm(event, this.props.bm.id )}>Delete</button></div>
+      <div className="bmCont">
+        <div className={this.props.className}>
+          <p>BM: {this.props.bm.name}</p> 
+          <p>HubNumber: {this.props.bm.hubNumber}</p>
+          <button onClick={(event)=>this.props.deleteBm(event, this.props.bm.id )}>Delete</button></div>
       </div>
     )
   }

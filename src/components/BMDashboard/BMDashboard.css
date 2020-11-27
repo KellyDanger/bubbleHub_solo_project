@@ -5,11 +5,13 @@
   margin-top: 40px;
   display: flex;
   border-radius: 10px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 
 .searchForm, input label {
   flex-direction: column;
-  background-color: #1b0352;
+  background-color: #1b0352D5;
 }
 
 .searchForm input {
@@ -24,17 +26,23 @@
   color: #f6f8f2;
 }
 .searchBtn{
-/* align-self: center; */
 background-color: #f6f8f2;
 border: none;
 border-radius: 10px;
 }
 .bubbleMateMatch {
   color: #f6f8f2;
+  text-align: center;
 }
 .bubbleMateMisMatch {
-  color: red
+  color: #f6f8f2;
+  background-color: #ff0000BF;
+  text-align: center;
 }
 .bubbleMate {
   color: #f6f8f2;
+  text-align: center;
+}
+.addBtn {
+  margin: 10px;
 }
