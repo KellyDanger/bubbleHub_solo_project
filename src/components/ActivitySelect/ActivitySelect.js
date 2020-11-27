@@ -51,7 +51,14 @@ class ActivitySelect extends Component {
       type: 'ADD_HUBNUMBER',
       payload: {num: param}
     })
-    this.props.history.push('/bubblemates')
+    swal({
+      title: 'Success!',
+      text: 'You Updated Your Activities!',
+      icon: 'success',
+      button: 'Next'
+    }).then(()=> {
+      this.props.history.push('/bubblemates')
+    })
   }
 
   render() {

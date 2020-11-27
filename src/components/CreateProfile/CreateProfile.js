@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './CreateProfile.css';
-// import mapStoreToProps from '../../redux/mapStoreToProps';
+import swal from 'sweetalert'
 
 class CreateProfile extends Component {
   state = {
@@ -26,7 +26,23 @@ class CreateProfile extends Component {
       type: 'ADD_USER_DATA',
       payload: this.state
     })
-    this.props.history.push('/risktolerance')
+    if(!this.state.name || !this.state.email || !this.state.city || !this.state.state){
+      swal ({
+        title: 'You Missed a Spot',
+        text: 'Please Fill Out All Fields',
+        icon: 'warning',
+        button: 'ok'
+      })
+    } else {
+      swal ({
+        title: 'Updated!',
+        text: 'Your Data is Added',
+        icon: 'success',
+        button: 'Next'
+      }).then(() => {
+        this.props.history.push('/risktolerance')
+      })
+    }
   }
 
 
@@ -34,7 +50,7 @@ class CreateProfile extends Component {
     return(
       <div className="dataForm">
           <label htmlFor="nameInput">First Name</label>
-          <input className="data"className="profileInput" type="text" id="nameInput" placeholder="First Name" onChange={(event)=> this.handleChangeFor(event, 'name')}/>
+          <input className="data" className="profileInput" type="text" id="nameInput" placeholder="First Name" onChange={(event)=> this.handleChangeFor(event, 'name')}/>
           <label htmlFor="emailInput">Email Address</label>
           <input className="data" className="profileInput" type="email" id="emailInput" placeholder="Email Address" onChange={(event)=> this.handleChangeFor(event, 'email')}/>
           <label htmlFor="cityInput">City</label>

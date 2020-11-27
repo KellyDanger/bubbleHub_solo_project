@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
 import './RiskTolerance.css';
 
 
@@ -21,17 +22,21 @@ class RiskTolerance extends Component {
       type: 'ADD_USER_TOLERANCE',
       payload: this.state
     })
-    console.log('USER TOLERANCEREDUCER', this.props.reduxState.userToleranceReducer);
-    console.log('');
-    
-    
-    this.props.history.push('/activityselect')
+    swal({
+      title: 'Success!',
+      text: 'You Updated Your Tolerance Level!',
+      icon: 'success',
+      button: 'Next'
+    }).then(()=> {
+      this.props.history.push('/activityselect')
+    })
   }
 
 
   render() {
     return(
       <>
+        <button className="activityBtn" onClick={this.handleSubmit}>Get My Tolerance Number</button>
         <div className="toleranceForm">
           <input type="radio" id="1" name="tolerance" value="1" onChange={(event) => this.handleCheck(event, '1')} />
           <label htmlFor="1">Level 1</label>
@@ -119,7 +124,6 @@ class RiskTolerance extends Component {
             <li>Masks are bad for your health</li>
             <li>**sneeze**cough**</li>
           </ul>   
-          <button onClick={this.handleSubmit}>Get My Tolerance Number</button>
         </div>
       </>
     )

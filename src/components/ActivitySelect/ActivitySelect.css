@@ -4,6 +4,8 @@
 }
 .activityBtn {
   position: fixed;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 .table-striped {
   width: 50%;
