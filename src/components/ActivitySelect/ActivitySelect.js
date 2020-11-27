@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import swal from 'sweetalert';
 import ActivityItem from '../ActivityItem/ActivityItem';
+import './ActivitySelect.css';
 // import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ActivitySelect extends Component {
@@ -61,8 +62,7 @@ class ActivitySelect extends Component {
         <table className="table-striped">
             <thead>
               <tr>
-                <th>Activity</th>
-                <th colSpan='2' className='text-center'>Do You Do This</th>
+                <th colSpan="2">Add Your Activities</th>
               </tr>
             </thead>
             {this.props.reduxState.userActivityReducer[0] && 

@@ -1,0 +1,45 @@
+.dashContain{
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #1b0352D5;
+  color: #f6f8f2;
+  border-radius: 10px;
+}
+.dashContain h1{
+  color: #f6f8f2;
+}
+.hubMatesCont {
+  margin: 0px 100px 0px 100px;
+
+}
+
+.bmCont{
+  background-color: #088198D5;
+  border: 1px solid #f6f8f2;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: larger;
+  border-radius: 10px;
+}
+.bmCont p {
+  margin-bottom: 0px;
+}
+i {
+  margin-left: 10px;
+}
+
+#flag {
+  color: red;
+}
+.activityCont {
+  background-color: #088198D5 ;
+  width: 50%;
+  margin: auto;
+  font-weight: bold;
+  font-size: larger;
+  border-radius: 10px
+}
+

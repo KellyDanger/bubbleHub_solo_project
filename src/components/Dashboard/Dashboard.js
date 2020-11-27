@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import './Dashboard.css';
 
 
 class Dashboard extends Component {
@@ -20,26 +21,45 @@ class Dashboard extends Component {
     })
     this.fetchUserActivities();
   }
+  bubbleMates = () => {
+    this.props.history.push('/bubblemates');
+  }
+  activitySelect = () => {
+    this.props.history.push('/activityselect')
+  }
 
   render() {
     return (
       <>
-        <div>
-          <h1 id="welcome">Welcome, {this.props.reduxState.user.username}!</h1>
+        <div className="dashContain">
+          <h1 id="welcome">{this.props.reduxState.user.username}'s Dashboard</h1>
           <h2>Your Current HubMates Are</h2>
-          <ul>
+          <div className="hubMatesCont" onClick={this.bubbleMates}>
             {this.props.reduxState.myBmReducer[0] && 
             this.props.reduxState.myBmReducer.map((bm) =>{
-            return <li key={bm.id}>{bm.name} whose HubNumber is: {bm.hubNumber}</li>
+            return <div className="bmCont" key={bm.id}>
+              <p>{bm.name}</p> 
+              <p>HubNumber is: {bm.hubNumber} </p> 
+              <p>Match:
+            {bm.hubNumber > this.props.reduxState.user.tolerance &&
+              <i id="flag" class="far fa-flag"></i>}
+            {bm.hubNumber <= this.props.reduxState.user.tolerance &&
+              <i class="far fa-check-circle"></i>
+            }</p>
+            </div>
+
             })}
-          </ul>
-          <h2>Your Current Activities Are:</h2>
-            {this.props.reduxState.userActivityReducer.map((activity) => { return(
-              activity.active === true &&
-              <div key={activity.id}>
-                <p>{activity.description}</p>
-              </div> 
-            )})}
+          </div>
+          <div onClick={this.activitySelect}>
+            <h2>Your Current Activities Are</h2>
+              {this.props.reduxState.userActivityReducer.map((activity) => { return(
+                activity.active === true &&
+                <div className="activityCont" key={activity.id}>
+                  <p>{activity.description}</p>
+                </div> 
+              )})}
+          </div>
+          
           <LogOutButton className="log-in" />
         </div>
       </>

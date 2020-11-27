@@ -2,6 +2,14 @@ html,
 body,
 #react-root {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  background-image: url('../../images/bubbleInBubble.jpg');
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-position: fixed;
+  
 }
 
 body {
@@ -113,16 +121,15 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
-
+  background-color: #f6f8f2;
 }
 /* -------CUSTOM STYLING DEV  */
-.table-striped {
-  width: 60%;
-  margin: 0px auto;
-  border-radius: 10px;
-  background-color: #f6f8f2D5;
-}
-
 .chosenAct {
   background-color: tomato;
+}
+
+.aboutBlurb {
+  background-color: #f6f8f263;
+  padding: 20px;
+  border-radius: 10px;
 }

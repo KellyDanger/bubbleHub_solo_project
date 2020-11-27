@@ -1,0 +1,35 @@
+.scrollContainer {
+  flex: 1;
+  overflow: scroll;
+}
+.activityBtn {
+  position: fixed;
+}
+.table-striped {
+  width: 50%;
+  margin: 0px auto;
+  border-radius: 10px;
+  background-color: #f6f8f2D5;
+}
+td{
+  align-content: center;
+  text-align: center;
+  margin-right: 10%;
+  border-top: 1px solid black;
+  padding: 10px;
+ 
+}
+
+th {
+  color: #f6f8f2;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #1b0352D5;
+}
+.active {
+  background-color: #088198D5 ;
+
+}
+.addActivityBtn {
+  margin-right: 3%;
+}
