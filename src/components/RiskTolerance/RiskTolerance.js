@@ -38,6 +38,7 @@ class RiskTolerance extends Component {
       <>
         <button className="activityBtn" onClick={this.handleSubmit}>Get My Tolerance Number</button>
         <div className="toleranceForm">
+          <h2>Select the Option that Best Fits Your Caution Level</h2>
           <input type="radio" id="1" name="tolerance" value="1" onChange={(event) => this.handleCheck(event, '1')} />
           <label htmlFor="1">Level 1</label>
           <ul>

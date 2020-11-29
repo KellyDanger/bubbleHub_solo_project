@@ -40,7 +40,7 @@ class Dashboard extends Component {
             return <div className="bmCont" key={bm.id}>
               <p>{bm.name}</p> 
               <p>HubNumber is: {bm.hubNumber} </p> 
-              <p>Match:
+              <p>
             {bm.hubNumber > this.props.reduxState.user.tolerance &&
               <i id="flag" class="far fa-flag"></i>}
             {bm.hubNumber <= this.props.reduxState.user.tolerance &&
