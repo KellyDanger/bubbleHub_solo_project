@@ -74,7 +74,7 @@ class BMDashboard extends Component {
               <>
                 <div className="bubbleMate">
                   <p>{this.props.reduxState.bmReducer.username}</p>
-                  <p>Hubnumber: {this.props.reduxState.bmReducer.hubNumber}</p>
+                  <p>HubNumber: {this.props.reduxState.bmReducer.hubNumber}</p>
                   <p>Match: <i class="far fa-check-circle"></i></p>
                   <button className="addBtn" onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
                   <button className="cancelBtn" onClick={this.cancel}>Cancel</button>
@@ -87,7 +87,7 @@ class BMDashboard extends Component {
               <>
                 <div className="bubbleMate">
                   <p>{this.props.reduxState.bmReducer.username}</p>
-                  <p>Hubnumber:  {this.props.reduxState.bmReducer.hubNumber}</p>
+                  <p>HubNumber:  {this.props.reduxState.bmReducer.hubNumber}</p>
                   <p> Not A Match: <i id="flag" class="far fa-flag"></i></p>
                   <button className="addBtn" onClick={(event) => this.addUser(event, this.props.reduxState.bmReducer.id)}>Add {this.props.reduxState.bmReducer.username} to Your Bubble</button>
                   <button className="cancelBtn" onClick={this.cancel}>Cancel</button>

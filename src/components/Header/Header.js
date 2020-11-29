@@ -4,9 +4,6 @@ import {HashRouter as Router, Link} from 'react-router-dom';
 import {withRouter} from 'react-router';
 import "./Header.css";
 
-import Nav from '../Nav/Nav';
-
-
 class Header extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
