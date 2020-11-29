@@ -11,6 +11,7 @@ class BMDashboard extends Component {
 
   componentDidMount = () => {
     this.fetchMyBubbleMates();
+    this.props.dispatch({type: 'FETCH_USER_TOLERANCE'})
   }
 //retrieves bubblemates for logged in user
   fetchMyBubbleMates = () => {
@@ -32,6 +33,9 @@ class BMDashboard extends Component {
       payload: this.state
     })
     document.getElementById('bmSearch').reset();
+    this.setState({
+      searchEmail: null
+    })
   }
 
   // on click of "add" button, sends id number of searched BM to bm saga
@@ -41,7 +45,6 @@ class BMDashboard extends Component {
       payload: {bmId: param}
     })
     this.props.dispatch({type: 'RESET_BM'})
-    console.log(this.props.reduxState.bmReducer); 
   }
 
   //delete route for bms sends id number of clicked bm to the bm saga
@@ -57,6 +60,7 @@ class BMDashboard extends Component {
 
   render() {
     return(
+      
       <div className="searchForm"> 
         <form id="bmSearch">
             <label htmlFor='searchBm'>Enter a Friend's Email Address to Find Them on BubbleHub</label>
