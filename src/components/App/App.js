@@ -40,7 +40,7 @@ class App extends Component {
     return (
       
       <Router>
-        <div class="header">
+        <div className="header">
           <Header/> 
           <Nav/>
         </div>

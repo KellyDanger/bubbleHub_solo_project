@@ -3,16 +3,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-// //gets all activiites from DB to populate activities survey
-// router.get('/', (req, res) => {
-//   let queryText = `SELECT * FROM "activities";`;
-//   pool.query(queryText).then((result)=> {
-//     res.send(result.rows)
-//   }).catch((error)=> {
-//     console.log('Error in GET activities');
-//     res.sendStatus(500);
-//   })
-// });
 //gets all activies for the logged in user
 router.get(`/:id`, (req, res) => {
   if(req.isAuthenticated()) {
