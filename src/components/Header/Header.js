@@ -25,11 +25,11 @@ class Header extends Component {
         </Router>
         {this.props.reduxState.user.id && 
         <div id="numRender">
-            <h2 className="nameGreet">Hello {this.props.reduxState.user.name}</h2>
-            <h2 className="numDisp">Your Tolerance is: {this.props.reduxState.userToleranceReducer}</h2>
-            <h2 className="numDisp">Your HubNumber is: {this.props.reduxState.hubNumberReducer}</h2>
-            <Nav/>
+            <h2 className="numDisp">
+              HubNumber: {this.props.reduxState.hubNumberReducer}</h2>
+            <h2 className="numDisp">Tolerance: {this.props.reduxState.userToleranceReducer}</h2>
         </div>
+
         }
       </div>
     )

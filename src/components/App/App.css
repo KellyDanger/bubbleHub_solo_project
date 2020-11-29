@@ -11,6 +11,10 @@ body,
   background-repeat: no-repeat;
   background-position: fixed; 
 }
+.header {
+  padding: 10px 20px 0 20px;
+  background-color: #088198D5;
+}
 
 body {
 

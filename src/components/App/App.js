@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux';
 
 import Footer from '../Footer/Footer';
+import Nav from '../Nav/Nav';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -39,7 +40,10 @@ class App extends Component {
     return (
       
       <Router>
-        <Header/>
+        <div class="header">
+          <Header/> 
+          <Nav/>
+        </div>
         <div className="scrollContainer">
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

@@ -3,13 +3,19 @@ body {
   color: #1b0352;
 }
 
-.numDisp {
-   width: 100%; 
-   text-align: right;
+.headContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 
-.headContainer {
-  background-color: #088198D5;
-  /* flex: 0 0 280px; */
+.numDisp {
+   text-align: right;
+   display: block;
+   font-size: 28px;
+}
+
+
+#numRender {
+
 }
