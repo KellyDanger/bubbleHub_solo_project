@@ -20,7 +20,6 @@ class Header extends Component {
             </div>
           </Link>
         </Router>
-        {JSON.stringify(this.props.reduxState.user)}
         {this.props.reduxState.user.id && 
         <div id="numRender">
             <h2 className="numDisp">
