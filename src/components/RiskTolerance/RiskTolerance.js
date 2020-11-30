@@ -28,7 +28,7 @@ class RiskTolerance extends Component {
       icon: 'success',
       button: 'Next'
     }).then(()=> {
-      this.props.dispatch({type: 'FETCH_USER_TOLERANCE'})
+      
       this.props.history.push('/activityselect')
     })
   }
