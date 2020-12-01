@@ -32,12 +32,12 @@ Sweet Alerts
 PostgresQL
 React-bootstrap
 
-Built With
+## Built With
 VS Code, Postman, Postico, and Chrome Dev Tools
 
 
-Acknowledgement
+## Acknowledgement
 Thanks to Prime Digital Academy who equipped and helped me to make this application a reality. Thanks to Casie S. at Prime for all her guidance and help!
 
-Support
+## Support
 If you have suggestions or issues, please email me at kellyanndanger@gmail.com
