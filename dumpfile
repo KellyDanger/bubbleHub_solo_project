@@ -1,0 +1,373 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.1
+-- Dumped by pg_dump version 13.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: activities; Type: TABLE; Schema: public; Owner: kellydanger
+--
+
+CREATE TABLE public.activities (
+    id integer NOT NULL,
+    description character varying(250) NOT NULL,
+    "riskLevel" integer NOT NULL
+);
+
+
+ALTER TABLE public.activities OWNER TO kellydanger;
+
+--
+-- Name: activities_id_seq; Type: SEQUENCE; Schema: public; Owner: kellydanger
+--
+
+CREATE SEQUENCE public.activities_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.activities_id_seq OWNER TO kellydanger;
+
+--
+-- Name: activities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kellydanger
+--
+
+ALTER SEQUENCE public.activities_id_seq OWNED BY public.activities.id;
+
+
+--
+-- Name: bubble_mates_junction; Type: TABLE; Schema: public; Owner: kellydanger
+--
+
+CREATE TABLE public.bubble_mates_junction (
+    id integer NOT NULL,
+    bubble_owner integer NOT NULL,
+    bm_id integer NOT NULL
+);
+
+
+ALTER TABLE public.bubble_mates_junction OWNER TO kellydanger;
+
+--
+-- Name: bubble_mates_junction_id_seq; Type: SEQUENCE; Schema: public; Owner: kellydanger
+--
+
+CREATE SEQUENCE public.bubble_mates_junction_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bubble_mates_junction_id_seq OWNER TO kellydanger;
+
+--
+-- Name: bubble_mates_junction_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kellydanger
+--
+
+ALTER SEQUENCE public.bubble_mates_junction_id_seq OWNED BY public.bubble_mates_junction.id;
+
+
+--
+-- Name: user; Type: TABLE; Schema: public; Owner: kellydanger
+--
+
+CREATE TABLE public."user" (
+    id integer NOT NULL,
+    username character varying(25) NOT NULL,
+    password character varying(100) NOT NULL,
+    name character varying(50),
+    email character varying(255),
+    city character varying(50),
+    state character varying(50),
+    "hubNumber" integer,
+    tolerance integer
+);
+
+
+ALTER TABLE public."user" OWNER TO kellydanger;
+
+--
+-- Name: user_activities; Type: TABLE; Schema: public; Owner: kellydanger
+--
+
+CREATE TABLE public.user_activities (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    activity_id integer NOT NULL
+);
+
+
+ALTER TABLE public.user_activities OWNER TO kellydanger;
+
+--
+-- Name: user_activities_id_seq; Type: SEQUENCE; Schema: public; Owner: kellydanger
+--
+
+CREATE SEQUENCE public.user_activities_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_activities_id_seq OWNER TO kellydanger;
+
+--
+-- Name: user_activities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kellydanger
+--
+
+ALTER SEQUENCE public.user_activities_id_seq OWNED BY public.user_activities.id;
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: kellydanger
+--
+
+CREATE SEQUENCE public.user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO kellydanger;
+
+--
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kellydanger
+--
+
+ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
+
+
+--
+-- Name: activities id; Type: DEFAULT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.activities ALTER COLUMN id SET DEFAULT nextval('public.activities_id_seq'::regclass);
+
+
+--
+-- Name: bubble_mates_junction id; Type: DEFAULT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.bubble_mates_junction ALTER COLUMN id SET DEFAULT nextval('public.bubble_mates_junction_id_seq'::regclass);
+
+
+--
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
+
+
+--
+-- Name: user_activities id; Type: DEFAULT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.user_activities ALTER COLUMN id SET DEFAULT nextval('public.user_activities_id_seq'::regclass);
+
+
+--
+-- Data for Name: activities; Type: TABLE DATA; Schema: public; Owner: kellydanger
+--
+
+COPY public.activities (id, description, "riskLevel") FROM stdin;
+1	Wearing a Mask	0
+2	Staying Home	0
+3	Solo Outdoor Exercise	0
+4	Getting Takeout	1
+5	Tennis	1
+6	Getting Gas	1
+7	Golf	4
+8	Friend Uses Your Bathroom	1
+9	Older Kids Playdate	4
+10	Camping-SD	1
+11	Beach-SD	4
+12	Outdoor Dining-SD	4
+13	Road Trip-SD	4
+14	Vacation Home with Another Family - with quarantine prep	4
+15	Grocery Shopping	4
+16	Library/Museum-SD	4
+17	See Your Doctor - EC	4
+18	Stay at a Hotel	9
+19	Small Backyard BBQ-SD	9
+20	Use a Public Restroom	9
+21	Visit a Mall-SD	9
+22	Small Indoor Dinner Party	9
+23	Public Pool	9
+24	Get a Haircut	16
+25	Work in a Shared Office	9
+26	Young Kid Playdates	9
+27	Send Kids to School/Camp/Daycare	9
+28	Casino - SD	16
+29	Movie Theatre - SD	16
+30	Playground	16
+31	Visit an Elder in Their Home	16
+32	Bowling	16
+33	Exercise at a gym	16
+34	Ride the Subway or Bus	16
+35	Eat in at a Restaurant	16
+36	Airplane	16
+37	Basketball	16
+38	Attend a Wedding or Funeral	25
+39	Hug or Shake Hands	25
+40	Not Wear a Facemask Routinely	25
+41	Go Out with Someone You Do Not Know Well	25
+42	Attend Amusement Park	25
+43	See Concert or Play	25
+44	Indoor Party	25
+45	Attend Sports in a Stadium	25
+46	Church	25
+47	Indoor Bar	25
+48	Nightclub	25
+49	Eat at a Buffet	25
+\.
+
+
+--
+-- Data for Name: bubble_mates_junction; Type: TABLE DATA; Schema: public; Owner: kellydanger
+--
+
+COPY public.bubble_mates_junction (id, bubble_owner, bm_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: kellydanger
+--
+
+COPY public."user" (id, username, password, name, email, city, state, "hubNumber", tolerance) FROM stdin;
+\.
+
+
+--
+-- Data for Name: user_activities; Type: TABLE DATA; Schema: public; Owner: kellydanger
+--
+
+COPY public.user_activities (id, user_id, activity_id) FROM stdin;
+\.
+
+
+--
+-- Name: activities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kellydanger
+--
+
+SELECT pg_catalog.setval('public.activities_id_seq', 49, true);
+
+
+--
+-- Name: bubble_mates_junction_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kellydanger
+--
+
+SELECT pg_catalog.setval('public.bubble_mates_junction_id_seq', 1, false);
+
+
+--
+-- Name: user_activities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kellydanger
+--
+
+SELECT pg_catalog.setval('public.user_activities_id_seq', 1, false);
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kellydanger
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 1, false);
+
+
+--
+-- Name: activities activities_pk; Type: CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.activities
+    ADD CONSTRAINT activities_pk PRIMARY KEY (id);
+
+
+--
+-- Name: bubble_mates_junction bubble_mates_junction_pk; Type: CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.bubble_mates_junction
+    ADD CONSTRAINT bubble_mates_junction_pk PRIMARY KEY (id);
+
+
+--
+-- Name: user_activities user_activities_pk; Type: CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.user_activities
+    ADD CONSTRAINT user_activities_pk PRIMARY KEY (id);
+
+
+--
+-- Name: user user_pk; Type: CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pk PRIMARY KEY (id);
+
+
+--
+-- Name: bubble_mates_junction bubble_mates_junction_fk0; Type: FK CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.bubble_mates_junction
+    ADD CONSTRAINT bubble_mates_junction_fk0 FOREIGN KEY (bubble_owner) REFERENCES public."user"(id);
+
+
+--
+-- Name: bubble_mates_junction bubble_mates_junction_fk1; Type: FK CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.bubble_mates_junction
+    ADD CONSTRAINT bubble_mates_junction_fk1 FOREIGN KEY (bm_id) REFERENCES public."user"(id);
+
+
+--
+-- Name: user_activities user_activities_fk0; Type: FK CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.user_activities
+    ADD CONSTRAINT user_activities_fk0 FOREIGN KEY (user_id) REFERENCES public."user"(id);
+
+
+--
+-- Name: user_activities user_activities_fk1; Type: FK CONSTRAINT; Schema: public; Owner: kellydanger
+--
+
+ALTER TABLE ONLY public.user_activities
+    ADD CONSTRAINT user_activities_fk1 FOREIGN KEY (activity_id) REFERENCES public.activities(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
