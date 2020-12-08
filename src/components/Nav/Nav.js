@@ -27,7 +27,7 @@ const Nav = (props) => {
         {/* Show the link to the info page and the logout button if the user is logged in */}
         {props.store.user.id && (
           <>
-            <Link className="nav-link" to="/createprofile">Profile Data</Link>
+            {/* <Link className="nav-link" to="/createprofile">Profile Data</Link> */}
             <Link className="nav-link" to="/risktolerance">Set Tolerance</Link>
             <Link className="nav-link" to="/activityselect">Edit Activities</Link>
             <Link className="nav-link" to="/bubblemates">BubbleMate Dashboard</Link>
